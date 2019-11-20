@@ -8,16 +8,16 @@ import java.util.ArrayList;
 
 import model.Veiculo;
 
-public class VeiculosData extends DataSource {
-    public VeiculosData() throws Exception {
+public class VeiculoData extends DataSource {
+    public VeiculoData() throws Exception {
     }
 
-    public boolean inserir(Veiculo obj) throws Exception {
+    public boolean inserir(Veiculo v) throws Exception {
         String sql = "INSERT INTO tbl_Veiculos (dsVeiculo, nrPlaca_Veiculo) VALUES (?, ?)";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
-        ps.setString(1, obj.getDesc());
-        ps.setString(2, obj.getNumeroPlaca());
+        ps.setString(1, v.getDesc());
+        ps.setString(2, v.getNumeroPlaca());
         int registros = ps.executeUpdate();
         closeConnection();
         if (registros > 0) {
@@ -27,13 +27,13 @@ public class VeiculosData extends DataSource {
         }
     }
 
-    public boolean editar(Veiculo obj) throws Exception {
+    public boolean editar(Veiculo v) throws Exception {
         String sql = "UPDATE FROM tbl_Veiculos (nrPlaca_Veiculo, nmFilial_Origem) VALUES (?, ?, ?) WHERE IdVeiculo = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
-        ps.setString(1, obj.getDesc());
-        ps.setString(2, obj.getNumeroPlaca());
-        ps.setInt(3, obj.getId());
+        ps.setString(1, v.getDesc());
+        ps.setString(2, v.getNumeroPlaca());
+        ps.setInt(3, v.getId());
         int registros = ps.executeUpdate();
         closeConnection();
         if (registros > 0) {
@@ -49,14 +49,14 @@ public class VeiculosData extends DataSource {
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
         ResultSet resultados = ps.executeQuery();
-        Veiculo m = new Veiculo();
+        Veiculo v = new Veiculo();
         if (resultados.next()) {
-            m.setId(resultados.getInt(1));
-            m.setDesc(resultados.getString(2));
-            m.setNumeroPlaca(resultados.getString(3));
+            v.setId(resultados.getInt(1));
+            v.setDesc(resultados.getString(2));
+            v.setNumeroPlaca(resultados.getString(3));
         }
         closeConnection();
-        return m;
+        return v;
     }
 
     public ArrayList<Veiculo> buscarTudo(int limit) throws Exception {
@@ -67,8 +67,8 @@ public class VeiculosData extends DataSource {
         ResultSet r = ps.executeQuery();
         ArrayList<Veiculo> veiculos = new ArrayList<>();
         while (r.next()) {
-            Veiculo m = new Veiculo(r.getInt(1), r.getString(2), r.getString(3));
-            veiculos.add(m);
+            Veiculo v = new Veiculo(r.getInt(1), r.getString(2), r.getString(3));
+            veiculos.add(v);
         }
         closeConnection();
         return veiculos;
@@ -82,8 +82,8 @@ public class VeiculosData extends DataSource {
         ResultSet r = ps.executeQuery();
         ArrayList<Veiculo> veiculos = new ArrayList<>();
         while (r.next()) {
-            Veiculo m = new Veiculo(r.getInt(1), r.getString(2), r.getString(3));
-            veiculos.add(m);
+            Veiculo v = new Veiculo(r.getInt(1), r.getString(2), r.getString(3));
+            veiculos.add(v);
         }
         closeConnection();
         return veiculos;
