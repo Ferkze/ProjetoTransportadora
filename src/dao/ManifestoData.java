@@ -20,6 +20,7 @@ public class ManifestoData extends DataSource {
         ps.setString(2, obj.getFilialOrigem());
         ps.setString(3, obj.getFilialDestino());
         int registros = ps.executeUpdate();
+        closeConnection();
         if (registros > 0) {
             return true;
         } else {
@@ -36,6 +37,7 @@ public class ManifestoData extends DataSource {
         ps.setString(3, obj.getFilialDestino());
         ps.setInt(4, obj.getId());
         int registros = ps.executeUpdate();
+        closeConnection();
         if (registros > 0) {
             return true;
         } else {
@@ -56,6 +58,7 @@ public class ManifestoData extends DataSource {
             m.setFilialOrigem(resultados.getString(3));
             m.setFilialDestino(resultados.getString(4));
         }
+        closeConnection();
         return m;
     }
 
@@ -70,6 +73,7 @@ public class ManifestoData extends DataSource {
             Manifesto m = new Manifesto(r.getInt(1), r.getString(2), r.getString(3), r.getString(4));
             manifestos.add(m);
         }
+        closeConnection();
         return manifestos;
     }
 
@@ -84,6 +88,7 @@ public class ManifestoData extends DataSource {
             Manifesto m = new Manifesto(r.getInt(1), r.getString(2), r.getString(3), r.getString(4));
             manifestos.add(m);
         }
+        closeConnection();
         return manifestos;
     }
 }
