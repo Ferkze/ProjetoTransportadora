@@ -60,6 +60,8 @@ public class VeiculoData extends DataSource {
     }
 
     public ArrayList<Veiculo> buscarTudo(int limit) throws Exception {
+        if (limit == 0)
+            limit = 10;
         String sql = "SELECT (IdVeiculo, dsVeiculo, nrPlaca_Veiculo) FROM tbl_Veiculos LIMIT ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
