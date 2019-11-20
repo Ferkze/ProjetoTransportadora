@@ -33,26 +33,22 @@ public class DataSource {
             
             System.out.println("Deu Certo!");
         }         
-         catch(SQLException ex) {
+        catch(SQLException ex) {
             System.err.println("ERRO na Conexão"+ex.getMessage());
         }
         catch(Exception ex){
-              System.err.println("ERRO GERAL"+ex.getMessage());
+            System.err.println("ERRO GERAL"+ex.getMessage());
+        }
     }
-}
-    
-public Connection getConnection(){
-    return this.connection;
-}
-public void closeDataSource(){
-    try {
-        connection.close();
+    public Connection getConnection(){
+        return this.connection;
     }
-    catch (Exception ex) {
-        System.err.println( "Erro ao desconectar"+ex.getMessage());
+    public void closeDataSource(){
+        try {
+            connection.close();
+        }
+        catch (Exception ex) {
+            System.err.println( "Erro ao desconectar"+ex.getMessage());
+        }
     }
-}
-
-
-
 }
