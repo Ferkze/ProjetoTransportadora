@@ -193,7 +193,7 @@ public class jifManifesto extends javax.swing.JInternalFrame {
         try {
             if(validarCampos()){
                 if(preencherObjeto()){
-                    if(DAO.incluir(obj)){
+                    if(DAO.inserir(obj)){
                         JOptionPane.showMessageDialog(this, 
                                 "Salvo com Sucesso!");
                         jbCancelarActionPerformed(evt);
@@ -236,8 +236,9 @@ public class jifManifesto extends javax.swing.JInternalFrame {
 }
     
     private boolean preencherObjeto(){
-        obj.setId(Integer.parseInt(jlId2.getText()));
+        obj.setPlacaVeiculo(jtPlacaVeiculo.getText());
         obj.setFilialOrigem(jtFilialOrigem.getText());
+        obj.setFilialDestino(jtFilialDestino.getText());
         return true;
     }
     private boolean validarCampos(){
@@ -251,6 +252,12 @@ public class jifManifesto extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this,
                     "Digite no máximo 50 caracteres");
             jtFilialOrigem.requestFocus();
+            return false;
+        }
+        if(jtPlacaVeiculo.getText().length()<8){
+            JOptionPane.showMessageDialog(this,
+                    "Digite os 8 dígitos da placa");
+            jtPlacaVeiculo.requestFocus();
             return false;
         }
         return true;

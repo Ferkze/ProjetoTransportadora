@@ -26,13 +26,13 @@ public class Manifesto {
      * @return the placa
      */
     public String getPlacaVeiculo() {
-        return placaVeiculo;
+        return this.placaVeiculo;
     }
 
     /**
      * @param placa the placa to set
      */
-    public void setPlacaVeiculo(String placa) {
+    public void setPlacaVeiculo(String placaVeiculo) {
         this.placaVeiculo = placaVeiculo;
     }
 
