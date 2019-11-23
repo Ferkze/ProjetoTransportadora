@@ -9,7 +9,7 @@ import java.sql.SQLException;
  *
  * @author Dell
  */
-public class DataSource {
+public class DataSource2 {
 
     private String hostname;
     private int port;
@@ -19,7 +19,7 @@ public class DataSource {
 
     private Connection connection;
 
-    public DataSource() {
+    public DataSource2() {
         try {
             hostname = "localhost";
             port = 1433;
@@ -27,16 +27,17 @@ public class DataSource {
             username = "SA";
             password = "FATECSBC";
 
-            String url = "jdbc:jtds:sqlserver://" + hostname + ":" + port + "/" + database;
+            String url = "jdbc:sqlserver://" + hostname + ":" + port + ";databaseName=" + database;
 
             DriverManager.registerDriver(new net.sourceforge.jtds.jdbc.Driver());
             connection = DriverManager.getConnection(url, username, password);
 
             System.out.println("Deu Certo!");
         } catch (SQLException ex) {
-            System.err.println("ERRO na Conexão" + ex.getMessage());
+            System.err.println("Erro de conexão: " + ex.getSQLState());
+            System.err.println("Erro de conexão: " + ex.toString());
         } catch (Exception ex) {
-            System.err.println("ERRO GERAL" + ex.getMessage());
+            System.err.println("Erro geral: " + ex.getMessage());
         }
     }
 
@@ -45,10 +46,13 @@ public class DataSource {
     }
 
     public void closeConnection() {
-        try {
-            connection.close();
+        try  {
+            if (this.connection.isClosed()) {
+                return;
+            }
+            this.connection.close();
         } catch (Exception ex) {
-            System.err.println("Erro ao desconectar" + ex.getMessage());
+            System.err.println("Erro ao desconectar: " + ex.getMessage());
         }
     }
 }
