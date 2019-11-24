@@ -33,6 +33,7 @@
                   <Component id="jbManifesto" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                   <Component id="jbMotorista" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                   <Component id="jbVeiculo" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                  <Component id="jbVeiculo1" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jdpPrincipal" min="-2" max="-2" attributes="0"/>
@@ -52,12 +53,14 @@
                       <Component id="jbCTRC" min="-2" pref="76" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jbCliReme" min="-2" pref="79" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="jbCliDest" min="-2" pref="73" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="jbMotorista" min="-2" pref="65" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="jbVeiculo" min="-2" pref="63" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="jbVeiculo1" min="-2" pref="63" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -133,6 +136,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbVeiculoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jbVeiculo1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Relat&#xf3;rio"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbVeiculo1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
