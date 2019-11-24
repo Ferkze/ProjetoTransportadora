@@ -8,7 +8,7 @@ import model.CTRC;
 
 public class jifCTRC extends javax.swing.JInternalFrame {
 
-    private CTRC ctrc;
+    private CTRC obj;
     private CTRCData DAO;
     /**
      * Creates new form jifManifesto
@@ -16,7 +16,7 @@ public class jifCTRC extends javax.swing.JInternalFrame {
     public jifCTRC() {
         initComponents();
         estadoInicialCampos();
-        ctrc = new CTRC();
+        obj = new CTRC();
         try {
             DAO = new CTRCData();
         } catch (Exception e) {
@@ -206,7 +206,7 @@ public class jifCTRC extends javax.swing.JInternalFrame {
         try {
             if (validarCampos()) {
                 preencherObjeto();
-                if (DAO.inserir(ctrc)) {
+                if (DAO.inserir(obj)) {
                     JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
                 } else {
                     JOptionPane.showMessageDialog(this, "Erro ao Salvar");
@@ -219,7 +219,7 @@ public class jifCTRC extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         try {
-            ctrc = DAO.buscar(Integer.parseInt(jtId.getText()));
+            obj = DAO.buscar(Integer.parseInt(jtId.getText()));
             atualizarCampos();
             
             jtId.setEnabled(false);
@@ -257,8 +257,8 @@ public class jifCTRC extends javax.swing.JInternalFrame {
         try {
             if (validarCampos()) {
                 preencherObjeto();
-                if (DAO.editar(ctrc)) {
-                    JOptionPane.showMessageDialog(this, "Editad com Sucesso!");
+                if (DAO.editar(obj)) {
+                    JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
                 } else {
                     JOptionPane.showMessageDialog(this, "Erro ao Editar");
                 }
@@ -314,12 +314,12 @@ public class jifCTRC extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
     
     public void atualizarCampos() {
-        jtId.setText(ctrc.getId()+"");
-        jtCliDest.setText(ctrc.getNomeDest());
-        jtCliReme.setText(ctrc.getNomeReme());
-        jtDataEmissao.setText(ctrc.getDataEmissao());
-        jtPesoFrete.setText(ctrc.getPeso()+"");
-        jtValorFrete.setText(ctrc.getValor()+"");
+        jtId.setText(obj.getId()+"");
+        jtCliDest.setText(obj.getNomeDest());
+        jtCliReme.setText(obj.getNomeReme());
+        jtDataEmissao.setText(obj.getDataEmissao());
+        jtPesoFrete.setText(obj.getPeso()+"");
+        jtValorFrete.setText(obj.getValor()+"");
     }
     
     private void estadoInicialCampos() {
@@ -350,11 +350,11 @@ public class jifCTRC extends javax.swing.JInternalFrame {
     }
 
     private void preencherObjeto() {
-        ctrc.setNomeDest(jtCliDest.getText());
-        ctrc.setNomeReme(jtCliReme.getText());
-        ctrc.setDataEmissao(jtDataEmissao.getText());
-        ctrc.setPeso(Integer.parseInt(jtPesoFrete.getText()));
-        ctrc.setValor(Float.parseFloat(jtValorFrete.getText()));
+        obj.setNomeDest(jtCliDest.getText());
+        obj.setNomeReme(jtCliReme.getText());
+        obj.setDataEmissao(jtDataEmissao.getText());
+        obj.setPeso(Integer.parseInt(jtPesoFrete.getText()));
+        obj.setValor(Float.parseFloat(jtValorFrete.getText()));
     }
 
     private boolean validarCampos() {

@@ -259,7 +259,7 @@ public class jifMotorista extends javax.swing.JInternalFrame {
             if (validarCampos()) {
                 preencherObjeto();
                 if (DAO.editar(obj)) {
-                    JOptionPane.showMessageDialog(this, "Editad com Sucesso!");
+                    JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
                 } else {
                     JOptionPane.showMessageDialog(this, "Erro ao Editar");
                 }
@@ -272,7 +272,7 @@ public class jifMotorista extends javax.swing.JInternalFrame {
     private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
         try {
             if (DAO.deletar(Integer.parseInt(jtId.getText()))) {
-                JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
+                JOptionPane.showMessageDialog(this, "Excluído com Sucesso!");
                 limparCampos();
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao Excluir");
