@@ -5,6 +5,10 @@
  */
 package transportadora.view;
 
+import dao.ClientesDestData;
+import javax.swing.JOptionPane;
+import model.ClientesDest;
+
 /**
  *
  * @author Dell
@@ -56,7 +60,7 @@ public class jifClienteDestinatario extends javax.swing.JInternalFrame {
         jtCNPJ = new javax.swing.JTextField();
         jlTelefone = new javax.swing.JLabel();
         jtTelefone = new javax.swing.JTextField();
-        jbCancelar1 = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
         jtId = new javax.swing.JTextField();
 
         setClosable(true);
@@ -69,24 +73,43 @@ public class jifClienteDestinatario extends javax.swing.JInternalFrame {
         jlNomeCliente.setText("Nome Cliente");
 
         jbNovo.setText("Novo");
+        jbNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNovoActionPerformed(evt);
+            }
+        });
 
         jbExcluir.setText("Excluir");
+        jbExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbExcluirActionPerformed(evt);
+            }
+        });
 
         jbEditar.setText("Editar");
+        jbEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEditarActionPerformed(evt);
+            }
+        });
 
         jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
         jbSalvar.setText("Salvar");
+        jbSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalvarActionPerformed(evt);
+            }
+        });
 
         jlEndereco.setText("Endereço");
 
         jlUF.setText("UF");
-
-        jtUF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtUFActionPerformed(evt);
-            }
-        });
 
         jlCidade.setText("Cidade");
 
@@ -96,7 +119,12 @@ public class jifClienteDestinatario extends javax.swing.JInternalFrame {
 
         jlTelefone.setText("Telefone");
 
-        jbCancelar1.setText("Buscar");
+        jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,7 +171,7 @@ public class jifClienteDestinatario extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jbNovo)
                                 .addGap(15, 15, 15)
-                                .addComponent(jbCancelar1)
+                                .addComponent(jbBuscar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jbCancelar)))))
                 .addContainerGap(23, Short.MAX_VALUE))
@@ -185,7 +213,7 @@ public class jifClienteDestinatario extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNovo)
                     .addComponent(jbCancelar)
-                    .addComponent(jbCancelar1))
+                    .addComponent(jbBuscar))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbEditar)
@@ -291,8 +319,8 @@ public class jifClienteDestinatario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbCancelar;
-    private javax.swing.JButton jbCancelar1;
     private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbExcluir;
     private javax.swing.JButton jbNovo;
