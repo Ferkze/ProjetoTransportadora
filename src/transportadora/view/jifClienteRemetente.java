@@ -5,17 +5,30 @@
  */
 package transportadora.view;
 
+import dao.ClientesRemeData;
+import javax.swing.JOptionPane;
+import model.ClientesReme;
+
 /**
  *
  * @author Dell
  */
 public class jifClienteRemetente extends javax.swing.JInternalFrame {
 
+    private ClientesReme obj;
+    private ClientesRemeData DAO;
     /**
      * Creates new form jifManifesto
      */
     public jifClienteRemetente() {
         initComponents();
+        estadoInicialCampos();
+        obj = new ClientesReme();
+        try {
+            DAO = new ClientesRemeData();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }
 
     /**
@@ -28,7 +41,6 @@ public class jifClienteRemetente extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jlId = new javax.swing.JLabel();
-        jlId2 = new javax.swing.JLabel();
         jlNomeCliente = new javax.swing.JLabel();
         jtNomeCliente = new javax.swing.JTextField();
         jbNovo = new javax.swing.JButton();
@@ -48,6 +60,8 @@ public class jifClienteRemetente extends javax.swing.JInternalFrame {
         jtCNPJ = new javax.swing.JTextField();
         jlTelefone = new javax.swing.JLabel();
         jtTelefone = new javax.swing.JTextField();
+        jtId = new javax.swing.JTextField();
+        jbBuscar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -56,19 +70,42 @@ public class jifClienteRemetente extends javax.swing.JInternalFrame {
 
         jlId.setText("Id");
 
-        jlId2.setText("0");
-
         jlNomeCliente.setText("Nome Cliente");
 
         jbNovo.setText("Novo");
+        jbNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNovoActionPerformed(evt);
+            }
+        });
 
         jbExcluir.setText("Excluir");
+        jbExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbExcluirActionPerformed(evt);
+            }
+        });
 
         jbEditar.setText("Editar");
+        jbEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEditarActionPerformed(evt);
+            }
+        });
 
         jbCancelar.setText("Cancelar");
+        jbCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCancelarActionPerformed(evt);
+            }
+        });
 
         jbSalvar.setText("Salvar");
+        jbSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalvarActionPerformed(evt);
+            }
+        });
 
         jlEndereco.setText("Endereço");
 
@@ -82,6 +119,13 @@ public class jifClienteRemetente extends javax.swing.JInternalFrame {
 
         jlTelefone.setText("Telefone");
 
+        jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,11 +134,8 @@ public class jifClienteRemetente extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jlId)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jlId2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlId)
                             .addComponent(jlNomeCliente)
                             .addComponent(jlEndereco)
                             .addComponent(jlCidade)
@@ -116,19 +157,23 @@ public class jifClienteRemetente extends javax.swing.JInternalFrame {
                                     .addComponent(jlUF)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(jtUF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(100, 100, 100)
-                        .addComponent(jbNovo)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbSalvar)
-                        .addGap(26, 26, 26)
-                        .addComponent(jbCancelar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(jbEditar)
-                        .addGap(30, 30, 30)
-                        .addComponent(jbExcluir)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbEditar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbExcluir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbSalvar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbNovo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbBuscar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbCancelar)))))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -137,7 +182,7 @@ public class jifClienteRemetente extends javax.swing.JInternalFrame {
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlId, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlId2))
+                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNomeCliente)
@@ -167,20 +212,115 @@ public class jifClienteRemetente extends javax.swing.JInternalFrame {
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNovo)
-                    .addComponent(jbSalvar)
-                    .addComponent(jbCancelar))
+                    .addComponent(jbCancelar)
+                    .addComponent(jbBuscar))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbEditar)
-                    .addComponent(jbExcluir))
+                    .addComponent(jbExcluir)
+                    .addComponent(jbSalvar))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        try {
+            obj = DAO.buscar(Integer.parseInt(jtId.getText()));
+            atualizarCampos();
+            
+            jtId.setEnabled(false);
+            jtCNPJ.setEnabled(true);
+            jtCPF.setEnabled(true);
+            jtCidade.setEnabled(true);
+            jtEndereco.setEnabled(true);
+            jtNomeCliente.setEnabled(true);
+            jtTelefone.setEnabled(true);
+            jtUF.setEnabled(true);
+
+            jbBuscar.setEnabled(false);
+            jbNovo.setEnabled(false);
+            jbCancelar.setEnabled(true);
+            jbEditar.setEnabled(true);
+            jbExcluir.setEnabled(true);
+            jbSalvar.setEnabled(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao Buscar: " + e.getMessage(), "Buscar", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNovoActionPerformed
+        limparCampos();
+        jtId.setText("0");
+
+        jtId.setEnabled(false);
+        jtCNPJ.setEnabled(true);
+        jtCPF.setEnabled(true);
+        jtCidade.setEnabled(true);
+        jtEndereco.setEnabled(true);
+        jtNomeCliente.setEnabled(true);
+        jtTelefone.setEnabled(true);
+        jtUF.setEnabled(true);
+
+        jbCancelar.setEnabled(true);
+        jbSalvar.setEnabled(true);
+        jbBuscar.setEnabled(false);
+        jbEditar.setEnabled(false);
+        jbExcluir.setEnabled(false);
+        jbNovo.setEnabled(false);
+    }//GEN-LAST:event_jbNovoActionPerformed
+
+    private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
+        estadoInicialCampos();
+    }//GEN-LAST:event_jbCancelarActionPerformed
+
+    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
+        try {
+            if (validarCampos()) {
+                preencherObjeto();
+                if (DAO.editar(obj)) {
+                    JOptionPane.showMessageDialog(this, "Editad com Sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Erro ao Editar");
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao Editar: " + e.getMessage(), "Editar", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jbEditarActionPerformed
+
+    private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
+        try {
+            if (DAO.deletar(Integer.parseInt(jtId.getText()))) {
+                JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
+                limparCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao Excluir");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao Excluir: " + e.getMessage(), "Excluir", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jbExcluirActionPerformed
+
+    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
+        try {
+            if (validarCampos()) {
+                preencherObjeto();
+                if (DAO.inserir(obj)) {
+                    JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao Salvar: " + e.getMessage(), "Salvar", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jbSalvarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbExcluir;
@@ -191,7 +331,6 @@ public class jifClienteRemetente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jlCidade;
     private javax.swing.JLabel jlEndereco;
     private javax.swing.JLabel jlId;
-    private javax.swing.JLabel jlId2;
     private javax.swing.JLabel jlNomeCliente;
     private javax.swing.JLabel jlTelefone;
     private javax.swing.JLabel jlUF;
@@ -199,8 +338,102 @@ public class jifClienteRemetente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtCPF;
     private javax.swing.JTextField jtCidade;
     private javax.swing.JTextField jtEndereco;
+    private javax.swing.JTextField jtId;
     private javax.swing.JTextField jtNomeCliente;
     private javax.swing.JTextField jtTelefone;
     private javax.swing.JTextField jtUF;
     // End of variables declaration//GEN-END:variables
+    
+    private void estadoInicialCampos() {
+        limparCampos();
+        
+        jtId.setEnabled(true);
+        jtCNPJ.setEnabled(false);
+        jtCPF.setEnabled(false);
+        jtCidade.setEnabled(false);
+        jtEndereco.setEnabled(false);
+        jtNomeCliente.setEnabled(false);
+        jtTelefone.setEnabled(false);
+        jtUF.setEnabled(false);
+        
+        jbBuscar.setEnabled(true);
+        jbNovo.setEnabled(true);
+        jbCancelar.setEnabled(false);
+        jbEditar.setEnabled(false);
+        jbExcluir.setEnabled(false);
+        jbSalvar.setEnabled(false);
+    }
+
+    private void limparCampos() {
+        jtCNPJ.setText("");
+        jtCPF.setText("");
+        jtCidade.setText("");
+        jtEndereco.setText("");
+        jtId.setText("");
+        jtNomeCliente.setText("");
+        jtTelefone.setText("");
+        jtUF.setText("");
+    }
+
+    private void preencherObjeto() {
+        obj.setCnpjCliente(jtCNPJ.getText());
+        obj.setCpfCliente(jtCPF.getText());
+        obj.setCidade(jtCidade.getText());
+        obj.setEndereco(jtEndereco.getText());
+        obj.setId(Integer.parseInt(jtId.getText()));
+        obj.setNome(jtNomeCliente.getText());
+        obj.setTelefone(jtTelefone.getText());
+        obj.setUf(jtUF.getText());
+    }
+
+    private void atualizarCampos() {
+        jtCNPJ.setText(obj.getCnpjCliente());
+        jtCPF.setText(obj.getCpfCliente());
+        jtCidade.setText(obj.getCidade());
+        jtEndereco.setText(obj.getEndereco());
+        jtId.setText(obj.getId()+"");
+        jtNomeCliente.setText(obj.getNome());
+        jtTelefone.setText(obj.getTelefone());
+        jtUF.setText(obj.getUf());
+    }
+
+    private boolean validarCampos() {
+        if (jtCNPJ.getText().equals("") && jtCPF.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Campo CNPJ ou CPF não podem ser ambos vazios");
+            jtCNPJ.requestFocus();
+            return false;
+        }
+        if (jtCidade.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Campo não pode ser vazio");
+            jtCidade.requestFocus();
+            return false;
+        }
+        if (jtEndereco.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Campo não pode ser vazio");
+            jtEndereco.requestFocus();
+            return false;
+        }
+        if (jtId.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Campo não pode ser vazio");
+            jtId.requestFocus();
+            return false;
+        }
+        if (jtNomeCliente.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Campo não pode ser vazio");
+            jtNomeCliente.requestFocus();
+            return false;
+        }
+        if (jtTelefone.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Campo não pode ser vazio");
+            jtTelefone.requestFocus();
+            return false;
+        }
+        if (jtUF.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Campo não pode ser vazio");
+            jtUF.requestFocus();
+            return false;
+        }
+        return true;
+    }
+
 }
