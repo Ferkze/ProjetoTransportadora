@@ -1,8 +1,6 @@
 
 package transportadora.view;
 
-import transportadora.jifManifesto;
-
 public class jfPrincipal extends javax.swing.JFrame {
 
     
