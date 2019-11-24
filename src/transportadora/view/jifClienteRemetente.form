@@ -145,7 +145,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jlId">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Id"/>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlNomeCliente">

@@ -68,7 +68,7 @@ public class jifClienteRemetente extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setTitle("Clientes Remetente");
 
-        jlId.setText("Id");
+        jlId.setText("Código");
 
         jlNomeCliente.setText("Nome Cliente");
 

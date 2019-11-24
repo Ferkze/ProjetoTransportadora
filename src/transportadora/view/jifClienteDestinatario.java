@@ -68,7 +68,7 @@ public class jifClienteDestinatario extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setTitle("Clientes Destinatário");
 
-        jlId.setText("Id");
+        jlId.setText("Código");
 
         jlNomeCliente.setText("Nome Cliente");
 
@@ -135,14 +135,14 @@ public class jifClienteDestinatario extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlId, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jlNomeCliente)
                             .addComponent(jlEndereco)
                             .addComponent(jlCidade)
                             .addComponent(jlTelefone)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jlCPF)
-                                .addComponent(jlCNPJ)))
+                                .addComponent(jlCNPJ))
+                            .addComponent(jlId, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)

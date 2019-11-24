@@ -30,7 +30,6 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jlId" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                           <Component id="jlNomeCliente" min="-2" max="-2" attributes="0"/>
                           <Component id="jlEndereco" min="-2" max="-2" attributes="0"/>
                           <Component id="jlCidade" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -39,6 +38,7 @@
                               <Component id="jlCPF" min="-2" max="-2" attributes="0"/>
                               <Component id="jlCNPJ" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jlId" alignment="0" min="-2" pref="66" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -145,7 +145,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jlId">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Id"/>
+        <Property name="text" type="java.lang.String" value="C&#xf3;digo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlNomeCliente">
