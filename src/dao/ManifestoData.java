@@ -79,18 +79,17 @@ public class ManifestoData extends DataSource {
         return manifestos;
     }
 
-    public ArrayList<Manifesto> deletar(int id) throws Exception {
+    public boolean deletar(int id) throws Exception {
         String sql = "DELETE FROM tbl_Manifestos WHERE IdManifesto = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
-        ResultSet r = ps.executeQuery();
-        ArrayList<Manifesto> manifestos = new ArrayList<>();
-        while (r.next()) {
-            Manifesto m = new Manifesto(r.getInt(1), r.getString(2), r.getString(3), r.getString(4));
-            manifestos.add(m);
-        }
+        int registros = ps.executeUpdate();
         closeConnection();
-        return manifestos;
+        if (registros > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -13,7 +13,7 @@
 	--Criar Tabelas
 CREATE TABLE tbl_Veiculos (
 IdVeiculo INT PRIMARY KEY IDENTITY(1,1),
-dsVeiculo VARCHAR(50) NOT NULL, -- Obrigatório
+dsVeiculo VARCHAR(50) NOT NULL, -- Obrigatï¿½rio
 nrPlaca_Veiculo VARCHAR(10) NOT NULL
 
 );
@@ -118,10 +118,10 @@ IdCtrc INT FOREIGN KEY REFERENCES tbl_CTRCs (IdCtrc) NOT NULL
 	-- DELETE tbl_Motoristas WHERE IdMotorista>'0'
 	-- SELECT * FROM tbl_Motoristas
 
-	INSERT INTO tbl_Motoristas(nmMotorista, dtNascimento, icSexo, nmTelefone) VALUES ('João da Silva', '1958-05-30', 'M', '(021)94444-3333')
+	INSERT INTO tbl_Motoristas(nmMotorista, dtNascimento, icSexo, nmTelefone) VALUES ('Joï¿½o da Silva', '1958-05-30', 'M', '(021)94444-3333')
 	INSERT INTO tbl_Motoristas(nmMotorista, dtNascimento, icSexo, nmTelefone) VALUES ('Maria do Luz', '1965-10-05', 'F', '(011)95544-4444')
 	INSERT INTO tbl_Motoristas(nmMotorista, dtNascimento, icSexo, nmTelefone) VALUES ('Fernando Gois', '1982-04-04', 'M', '(016)96644-5555')
-	INSERT INTO tbl_Motoristas(nmMotorista, dtNascimento, icSexo, nmTelefone) VALUES ('Márcia Feliz', '1975-11-28', 'F', '(035)97744-6666')
+	INSERT INTO tbl_Motoristas(nmMotorista, dtNascimento, icSexo, nmTelefone) VALUES ('Mï¿½rcia Feliz', '1975-11-28', 'F', '(035)97744-6666')
 	INSERT INTO tbl_Motoristas(nmMotorista, dtNascimento, icSexo, nmTelefone) VALUES ('Marcos Rueda', '1970-11-05', 'M', '(035)98888-7777')
 
 
@@ -132,8 +132,8 @@ IdCtrc INT FOREIGN KEY REFERENCES tbl_CTRCs (IdCtrc) NOT NULL
 
 	INSERT INTO tbl_Manifestos(nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino) VALUES ('AAA-1111', 'CD Santos','CD Cotia')
 	INSERT INTO tbl_Manifestos(nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino) VALUES ('BBA-2222', 'CD Minas Gerais','CD Aracaju')
-	INSERT INTO tbl_Manifestos(nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino) VALUES ('CCC-3333', 'CD Minas Gerais','CD São Paulo')
-	INSERT INTO tbl_Manifestos(nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino) VALUES ('DDD-4444', 'CD São Paulo','CD Bahia')
+	INSERT INTO tbl_Manifestos(nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino) VALUES ('CCC-3333', 'CD Minas Gerais','CD Sï¿½o Paulo')
+	INSERT INTO tbl_Manifestos(nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino) VALUES ('DDD-4444', 'CD Sï¿½o Paulo','CD Bahia')
 	INSERT INTO tbl_Manifestos(nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino) VALUES ('EEE-5555', 'CD Santos','CD Rio de Janeiro')
 
 
@@ -148,10 +148,10 @@ IdCtrc INT FOREIGN KEY REFERENCES tbl_CTRCs (IdCtrc) NOT NULL
 	--SELECT nmCli_Rementente, nmCli_Destinatario, qtPesoFrete,vlFrete, FORMAT (dtEmissao,'d', 'pt-br') AS dtEmissao FROM tbl_CTRCs
  
 	INSERT INTO tbl_CTRCs(nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES ('Pescados SP', 'Hipermercado Extra','2019-06-11','5000', '3750')
-	INSERT INTO tbl_CTRCs(nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES ('Minérios Ouro', 'Lapidadora Sergipe','2019-01-11','3950','12750')
-	INSERT INTO tbl_CTRCs(nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES ('Laticínios da Vovó', 'Distribuidora São João','2019-12-13','3000', '5300')
-	INSERT INTO tbl_CTRCs(nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES ('Autometal', 'Auto Peças Kabum','2019-03-11', '5000', '9750')
-	INSERT INTO tbl_CTRCs(nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES ('Eletrônicos SA', 'BIG Cell','2019-07-01', '900', '9310')
+	INSERT INTO tbl_CTRCs(nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES ('Minï¿½rios Ouro', 'Lapidadora Sergipe','2019-01-11','3950','12750')
+	INSERT INTO tbl_CTRCs(nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES ('Laticï¿½nios da Vovï¿½', 'Distribuidora Sï¿½o Joï¿½o','2019-12-13','3000', '5300')
+	INSERT INTO tbl_CTRCs(nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES ('Autometal', 'Auto Peï¿½as Kabum','2019-03-11', '5000', '9750')
+	INSERT INTO tbl_CTRCs(nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES ('Eletrï¿½nicos SA', 'BIG Cell','2019-07-01', '900', '9310')
 
 
 	-- Inserir Clientes_Remetente
@@ -161,15 +161,15 @@ IdCtrc INT FOREIGN KEY REFERENCES tbl_CTRCs (IdCtrc) NOT NULL
 
 
 	
-	INSERT INTO tbl_Clientes_Reme(nmCli_Rementente,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Pescados SP', 'Rua Joaquim Silva, 375-Bairro do Limão', 'São Paulo', 'SP', '77551122000170', '', '(11) 2260-2780')
-	INSERT INTO tbl_Clientes_Reme(nmCli_Rementente,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Minérios Ouro', 'Rua Silva Jardim, 115-Bairro Três Marias', 'Extrema', 'MG', '88443311000171', '', '(35) 2233-2781')
-	INSERT INTO tbl_Clientes_Reme(nmCli_Rementente,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Laticínios da Vovó', 'Rua Presidente Kennedy,1000 - Centro', 'Extrema', 'MG', '33557788000172', '', '(35) 4422-2782')
-	INSERT INTO tbl_Clientes_Reme(nmCli_Rementente,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Autometal', 'Rod. Anchieta, 1375-Centro','São Paulo', 'SP', '44335522000173', '', '(11) 5522-2783')
-	INSERT INTO tbl_Clientes_Reme(nmCli_Rementente,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Eletrônicos SA', 'Rua Caminho do Mar, 6670-Bairro Saúde', 'Santos', 'SP', '55443311000174', '', '(13) 5566-2784')
+	INSERT INTO tbl_Clientes_Reme(nmCli_Rementente,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Pescados SP', 'Rua Joaquim Silva, 375-Bairro do Limï¿½o', 'Sï¿½o Paulo', 'SP', '77551122000170', '', '(11) 2260-2780')
+	INSERT INTO tbl_Clientes_Reme(nmCli_Rementente,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Minï¿½rios Ouro', 'Rua Silva Jardim, 115-Bairro Trï¿½s Marias', 'Extrema', 'MG', '88443311000171', '', '(35) 2233-2781')
+	INSERT INTO tbl_Clientes_Reme(nmCli_Rementente,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Laticï¿½nios da Vovï¿½', 'Rua Presidente Kennedy,1000 - Centro', 'Extrema', 'MG', '33557788000172', '', '(35) 4422-2782')
+	INSERT INTO tbl_Clientes_Reme(nmCli_Rementente,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Autometal', 'Rod. Anchieta, 1375-Centro','Sï¿½o Paulo', 'SP', '44335522000173', '', '(11) 5522-2783')
+	INSERT INTO tbl_Clientes_Reme(nmCli_Rementente,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Eletrï¿½nicos SA', 'Rua Caminho do Mar, 6670-Bairro Saï¿½de', 'Santos', 'SP', '55443311000174', '', '(13) 5566-2784')
 
 	
 
-	-- Inserir Clientes_Destinatário
+	-- Inserir Clientes_Destinatï¿½rio
 
 	-- DELETE tbl_Clientes_Dest WHERE IdCli_Dest>'0'
 	-- SELECT * FROM tbl_Clientes_Dest
@@ -178,10 +178,10 @@ IdCtrc INT FOREIGN KEY REFERENCES tbl_CTRCs (IdCtrc) NOT NULL
 
 
 	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Hipermercado Extra', 'Rua Maria da Penha, 3000-Centro', 'Cotia', 'SP', '22336655000155', '', '(11) 8899-5005')
-	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Lapidadora Sergipe', 'Rua Sol,8700-Bairro das Flores', 'Arauá', 'SE', '', '23165498700', '(79) 2233-4004')
-	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Distribuidora São João', 'Rua Airton Senna, 6500-Bairro Limeira', 'São Paulo', 'SP', '22558899000157', '', '(11) 2211-4003')
-	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Auto Peças Kabum', 'Rua Joaquim Nabuco, 37-Bairro Ferraz Alvim', 'Salvador', 'BA', '11447788000158', '', '(11) 7744-3002')
-	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('BIG Cell', 'Rua Netuno, 66-Bairro Limpão', 'Petrópolis', 'RJ', '11223344000159', '', '(21) 6699-3001')
+	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Lapidadora Sergipe', 'Rua Sol,8700-Bairro das Flores', 'Arauï¿½', 'SE', '', '23165498700', '(79) 2233-4004')
+	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Distribuidora Sï¿½o Joï¿½o', 'Rua Airton Senna, 6500-Bairro Limeira', 'Sï¿½o Paulo', 'SP', '22558899000157', '', '(11) 2211-4003')
+	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Auto Peï¿½as Kabum', 'Rua Joaquim Nabuco, 37-Bairro Ferraz Alvim', 'Salvador', 'BA', '11447788000158', '', '(11) 7744-3002')
+	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('BIG Cell', 'Rua Netuno, 66-Bairro Limpï¿½o', 'Petrï¿½polis', 'RJ', '11223344000159', '', '(21) 6699-3001')
 
 
 
@@ -195,11 +195,11 @@ IdCtrc INT FOREIGN KEY REFERENCES tbl_CTRCs (IdCtrc) NOT NULL
 	--SELECT nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, FORMAT  (vlFrete,'c', 'pt-br') AS vlFrete FROM tbl_CTRCs_Manifestos
 	
 
-	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('João da Silva','AAA-1111', 'CD Santos','CD Cotia', 'Pescados SP', 'Hipermercado Extra','5000', '3750',1,1,1,1,1,1)
-	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Maria do Luz,','BBA-2222', 'CD Minas Gerais','CD Aracaju','Minérios Ouro', 'Lapidadora Sergipe','3950','12750',2,2,2,2,2,2)
-	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Fernando Gois','CCC-3333', 'CD Minas Gerais','CD São Paulo', 'Laticínios da Vovó', 'Distribuidora São João','3000', '5300',3,3,3,3,3,3)
-    INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Márcia Feliz','DDD-4444', 'CD São Paulo','CD Bahia', 'Autometal', 'Auto Peças Kabum', '5000', '9750',4,4,4,4,4,4)
-	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Marcos Rueda','EEE-5555', 'CD Santos','CD Rio de Janeiro', 'Eletrônicos SA', 'BIG Cell','900', '9310',5,5,5,5,5,5)
+	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Joï¿½o da Silva','AAA-1111', 'CD Santos','CD Cotia', 'Pescados SP', 'Hipermercado Extra','5000', '3750',1,1,1,1,1,1)
+	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Maria do Luz,','BBA-2222', 'CD Minas Gerais','CD Aracaju','Minï¿½rios Ouro', 'Lapidadora Sergipe','3950','12750',2,2,2,2,2,2)
+	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Fernando Gois','CCC-3333', 'CD Minas Gerais','CD Sï¿½o Paulo', 'Laticï¿½nios da Vovï¿½', 'Distribuidora Sï¿½o Joï¿½o','3000', '5300',3,3,3,3,3,3)
+    INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Mï¿½rcia Feliz','DDD-4444', 'CD Sï¿½o Paulo','CD Bahia', 'Autometal', 'Auto Peï¿½as Kabum', '5000', '9750',4,4,4,4,4,4)
+	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Marcos Rueda','EEE-5555', 'CD Santos','CD Rio de Janeiro', 'Eletrï¿½nicos SA', 'BIG Cell','900', '9310',5,5,5,5,5,5)
 
 
 

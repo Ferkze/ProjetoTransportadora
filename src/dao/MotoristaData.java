@@ -82,18 +82,17 @@ public class MotoristaData extends DataSource {
         return motoristas;
     }
 
-    public ArrayList<Motorista> deletar(int id) throws Exception {
+    public boolean deletar(int id) throws Exception {
         String sql = "DELETE FROM tbl_Motoristas WHERE IdMotorista = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
-        ResultSet r = ps.executeQuery();
-        ArrayList<Motorista> motoristas = new ArrayList<>();
-        while (r.next()) {
-            Motorista m = new Motorista(r.getInt(1), r.getString(2), r.getString(3), r.getString(4), r.getString(5));
-            motoristas.add(m);
-        }
+        int registros = ps.executeUpdate();
         closeConnection();
-        return motoristas;
+        if (registros > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

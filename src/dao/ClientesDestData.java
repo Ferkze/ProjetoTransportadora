@@ -92,19 +92,17 @@ public class ClientesDestData extends DataSource {
         return remetentes;
     }
 
-    public ArrayList<ClientesDest> deletar(int id) throws Exception {
+    public boolean deletar(int id) throws Exception {
         String sql = "DELETE FROM tbl_Clientes_Dest WHERE IdCli_Dest = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
-        ResultSet rs = ps.executeQuery();
-        ArrayList<ClientesDest> remetentes = new ArrayList<>();
-        while (rs.next()) {
-            ClientesDest r = new ClientesDest(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-                    rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
-            remetentes.add(r);
-        }
+        int registros = ps.executeUpdate();
         closeConnection();
-        return remetentes;
+        if (registros > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

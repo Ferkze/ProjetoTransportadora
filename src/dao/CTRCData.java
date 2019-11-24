@@ -86,19 +86,17 @@ public class CTRCData extends DataSource {
         return ctrcs;
     }
 
-    public ArrayList<CTRC> deletar(int id) throws Exception {
+    public boolean deletar(int id) throws Exception {
         String sql = "DELETE FROM tbl_CTRCs WHERE IdCtrc = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
-        ResultSet r = ps.executeQuery();
-        ArrayList<CTRC> ctrcs = new ArrayList<>();
-        while (r.next()) {
-            CTRC ctrc = new CTRC(r.getInt(1), r.getString(2), r.getString(3), r.getString(4), r.getInt(5),
-                    r.getFloat(6));
-            ctrcs.add(ctrc);
-        }
+        int registros = ps.executeUpdate();
         closeConnection();
-        return ctrcs;
+        if (registros > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

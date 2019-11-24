@@ -76,18 +76,17 @@ public class VeiculoData extends DataSource {
         return veiculos;
     }
 
-    public ArrayList<Veiculo> deletar(int id) throws Exception {
+    public boolean deletar(int id) throws Exception {
         String sql = "DELETE FROM tbl_Veiculos WHERE IdVeiculo = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
-        ResultSet r = ps.executeQuery();
-        ArrayList<Veiculo> veiculos = new ArrayList<>();
-        while (r.next()) {
-            Veiculo v = new Veiculo(r.getInt(1), r.getString(2), r.getString(3));
-            veiculos.add(v);
-        }
+        int registros = ps.executeUpdate();
         closeConnection();
-        return veiculos;
+        if (registros > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
