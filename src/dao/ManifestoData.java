@@ -46,7 +46,7 @@ public class ManifestoData extends DataSource {
     }
 
     public Manifesto buscar(int id) throws Exception {
-        String sql = "SELECT (IdManifesto, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino) FROM tbl_Manifestos WHERE IdManifesto = ?";
+        String sql = "SELECT IdManifesto, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino FROM tbl_Manifestos WHERE IdManifesto = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -65,7 +65,7 @@ public class ManifestoData extends DataSource {
     public ArrayList<Manifesto> buscarTudo(int limit) throws Exception {
         if (limit == 0)
             limit = 10;
-        String sql = "SELECT (IdManifesto, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino) FROM tbl_Manifestos LIMIT ?";
+        String sql = "SELECT IdManifesto, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino FROM tbl_Manifestos LIMIT ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, limit);

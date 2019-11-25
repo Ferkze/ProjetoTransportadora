@@ -48,7 +48,7 @@ public class MotoristaData extends DataSource {
     }
 
     public Motorista buscar(int id) throws Exception {
-        String sql = "SELECT (IdMotorista, nmMotorista, dtNascimento, icSexo, nmTelefone) FROM tbl_Motoristas WHERE IdMotorista = ?";
+        String sql = "SELECT IdMotorista, nmMotorista, dtNascimento, icSexo, nmTelefone FROM tbl_Motoristas WHERE IdMotorista = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -68,7 +68,7 @@ public class MotoristaData extends DataSource {
     public ArrayList<Motorista> buscarTudo(int limit) throws Exception {
         if (limit == 0)
             limit = 10;
-        String sql = "SELECT (IdMotorista, nmMotorista, dtNascimento, icSexo, nmTelefone) FROM tbl_Motoristas LIMIT ?";
+        String sql = "SELECT IdMotorista, nmMotorista, dtNascimento, icSexo, nmTelefone FROM tbl_Motoristas LIMIT ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, limit);

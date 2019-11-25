@@ -54,7 +54,7 @@ public class ClientesDestData extends DataSource {
     }
 
     public ClientesDest buscar(int id) throws Exception {
-        String sql = "SELECT (IdCli_Dest, nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone) FROM tbl_Clientes_Dest WHERE IdCli_Dest = ?";
+        String sql = "SELECT IdCli_Dest, nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone FROM tbl_Clientes_Dest WHERE IdCli_Dest = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -77,7 +77,7 @@ public class ClientesDestData extends DataSource {
     public ArrayList<ClientesDest> buscarTudo(int limit) throws Exception {
         if (limit == 0)
             limit = 10;
-        String sql = "SELECT (IdCli_Dest, nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone) FROM tbl_Clientes_Dest LIMIT ?";
+        String sql = "SELECT IdCli_Dest, nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone FROM tbl_Clientes_Dest LIMIT ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, limit);

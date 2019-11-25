@@ -50,7 +50,7 @@ public class CTRCData extends DataSource {
     }
 
     public CTRC buscar(int id) throws Exception {
-        String sql = "SELECT (IdCtrc, nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) FROM tbl_CTRCs WHERE IdCtrc = ?";
+        String sql = "SELECT IdCtrc, nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete FROM tbl_CTRCs WHERE IdCtrc = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -71,7 +71,7 @@ public class CTRCData extends DataSource {
     public ArrayList<CTRC> buscarTudo(int limit) throws Exception {
         if (limit == 0)
             limit = 10;
-        String sql = "SELECT (IdCtrc, nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) FROM tbl_CTRCs LIMIT ?";
+        String sql = "SELECT IdCtrc, nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete FROM tbl_CTRCs LIMIT ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, limit);
