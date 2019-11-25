@@ -33,7 +33,7 @@
                   <Component id="jbManifesto" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                   <Component id="jbMotorista" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                   <Component id="jbVeiculo" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
-                  <Component id="jbVeiculo1" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                  <Component id="jbRelatorio" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jdpPrincipal" min="-2" max="-2" attributes="0"/>
@@ -60,7 +60,7 @@
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="jbVeiculo" min="-2" pref="63" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="jbVeiculo1" min="-2" pref="63" max="-2" attributes="0"/>
+                      <Component id="jbRelatorio" min="-2" pref="63" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -138,12 +138,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbVeiculoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jbVeiculo1">
+    <Component class="javax.swing.JButton" name="jbRelatorio">
       <Properties>
         <Property name="text" type="java.lang.String" value="Relat&#xf3;rio"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbVeiculo1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbRelatorioActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

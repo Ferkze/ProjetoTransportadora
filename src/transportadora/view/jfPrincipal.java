@@ -6,6 +6,7 @@ public class jfPrincipal extends javax.swing.JFrame {
     
     public jfPrincipal() {
         initComponents();
+        jbRelatorio.setEnabled(false);
     }
 
     
@@ -20,7 +21,7 @@ public class jfPrincipal extends javax.swing.JFrame {
         jbCliDest = new javax.swing.JButton();
         jbMotorista = new javax.swing.JButton();
         jbVeiculo = new javax.swing.JButton();
-        jbVeiculo1 = new javax.swing.JButton();
+        jbRelatorio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PROJETO TRANSPORTADORA");
@@ -81,10 +82,10 @@ public class jfPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbVeiculo1.setText("Relatório");
-        jbVeiculo1.addActionListener(new java.awt.event.ActionListener() {
+        jbRelatorio.setText("Relatório");
+        jbRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbVeiculo1ActionPerformed(evt);
+                jbRelatorioActionPerformed(evt);
             }
         });
 
@@ -101,7 +102,7 @@ public class jfPrincipal extends javax.swing.JFrame {
                     .addComponent(jbManifesto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbMotorista, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbVeiculo1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jdpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -125,7 +126,7 @@ public class jfPrincipal extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(jbVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
-                        .addComponent(jbVeiculo1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jbRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -168,9 +169,9 @@ public class jfPrincipal extends javax.swing.JFrame {
       janela.setVisible(true);
     }//GEN-LAST:event_jbVeiculoActionPerformed
 
-    private void jbVeiculo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVeiculo1ActionPerformed
+    private void jbRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRelatorioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbVeiculo1ActionPerformed
+    }//GEN-LAST:event_jbRelatorioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,8 +214,8 @@ public class jfPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jbCliReme;
     private javax.swing.JButton jbManifesto;
     private javax.swing.JButton jbMotorista;
+    private javax.swing.JButton jbRelatorio;
     private javax.swing.JButton jbVeiculo;
-    private javax.swing.JButton jbVeiculo1;
     private javax.swing.JDesktopPane jdpPrincipal;
     // End of variables declaration//GEN-END:variables
 }
