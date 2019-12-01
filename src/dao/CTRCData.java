@@ -22,7 +22,6 @@ public class CTRCData extends DataSource {
         ps.setInt(4, obj.getPeso());
         ps.setFloat(5, obj.getValor());
         int registros = ps.executeUpdate();
-        closeConnection();
         if (registros > 0) {
             return true;
         } else {
@@ -31,7 +30,7 @@ public class CTRCData extends DataSource {
     }
 
     public boolean editar(CTRC obj) throws Exception {
-        String sql = "UPDATE FROM tbl_CTRCs (nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES (?, ?, ?, ?, ?) WHERE IdCtrc = ?";
+        String sql = "UPDATE tbl_CTRCs SET nmCli_Rementente = ?, nmCli_Destinatario = ?, dtEmissao = ?, qtPesoFrete = ?, vlFrete = ? WHERE IdCtrc = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, obj.getNomeReme());
@@ -41,7 +40,7 @@ public class CTRCData extends DataSource {
         ps.setFloat(5, obj.getValor());
         ps.setInt(6, obj.getId());
         int registros = ps.executeUpdate();
-        closeConnection();
+        
         if (registros > 0) {
             return true;
         } else {
@@ -64,7 +63,7 @@ public class CTRCData extends DataSource {
             ctrc.setPeso(resultados.getInt(5));
             ctrc.setValor(resultados.getFloat(6));
         }
-        closeConnection();
+        
         return ctrc;
     }
 
@@ -82,17 +81,20 @@ public class CTRCData extends DataSource {
                     r.getFloat(6));
             ctrcs.add(ctrc);
         }
-        closeConnection();
+        
         return ctrcs;
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "DELETE FROM tbl_CTRCs WHERE IdCtrc = ?";
+        String sql = "UPDATE tbl_CTRCs_Manifestos SET IdCtrc = null WHERE IdCtrc = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
+        sql = "DELETE FROM tbl_CTRCs WHERE IdCtrc = ?";
+        ps = c.prepareStatement(sql);
+        ps.setInt(1, id);
         int registros = ps.executeUpdate();
-        closeConnection();
+        
         if (registros > 0) {
             return true;
         } else {

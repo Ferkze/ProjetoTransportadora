@@ -24,7 +24,7 @@ public class ClientesRemeData extends DataSource {
         ps.setString(6, r.getCpfCliente());
         ps.setString(7, r.getTelefone());
         int registros = ps.executeUpdate();
-        closeConnection();
+        
         if (registros > 0) {
             return true;
         } else {
@@ -33,7 +33,7 @@ public class ClientesRemeData extends DataSource {
     }
 
     public boolean editar(ClientesReme r) throws Exception {
-        String sql = "UPDATE FROM tbl_Clientes_Reme (nmCli_Rementente, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone) VALUES (?, ?, ?, ?) WHERE IdCli_Reme = ?";
+        String sql = "UPDATE tbl_Clientes_Reme SET nmCli_Rementente = ?, nmEndereco = ?, nmCidade = ?, nmUF = ?, cnpjCliente = ?, cpfCliente = ?, nmTelefone = ? WHERE IdCli_Reme = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, r.getNome());
@@ -45,7 +45,7 @@ public class ClientesRemeData extends DataSource {
         ps.setString(7, r.getTelefone());
         ps.setInt(8, r.getId());
         int registros = ps.executeUpdate();
-        closeConnection();
+        
         if (registros > 0) {
             return true;
         } else {
@@ -70,7 +70,7 @@ public class ClientesRemeData extends DataSource {
             r.setCpfCliente(resultados.getString(7));
             r.setTelefone(resultados.getString(8));
         }
-        closeConnection();
+        
         return r;
     }
 
@@ -88,17 +88,22 @@ public class ClientesRemeData extends DataSource {
                     rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
             remetentes.add(r);
         }
-        closeConnection();
+        
         return remetentes;
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "DELETE FROM tbl_Clientes_Reme WHERE IdCli_Reme = ?";
+        String sql = "UPDATE tbl_CTRCs_Manifestos SET IdCli_Reme = null  WHERE IdCli_Reme = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
+        ps.executeUpdate();
+        sql = "DELETE FROM tbl_Clientes_Reme WHERE IdCli_Reme = ?";
+        c = getConnection();
+        ps = c.prepareStatement(sql);
+        ps.setInt(1, id);
         int registros = ps.executeUpdate();
-        closeConnection();
+        
         if (registros > 0) {
             return true;
         } else {

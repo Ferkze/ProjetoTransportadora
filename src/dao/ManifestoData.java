@@ -20,7 +20,7 @@ public class ManifestoData extends DataSource {
         ps.setString(2, obj.getFilialOrigem());
         ps.setString(3, obj.getFilialDestino());
         int registros = ps.executeUpdate();
-        closeConnection();
+        
         if (registros > 0) {
             return true;
         } else {
@@ -29,15 +29,17 @@ public class ManifestoData extends DataSource {
     }
 
     public boolean editar(Manifesto obj) throws Exception {
-        String sql = "UPDATE FROM tbl_Manifestos (nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino) VALUES (?, ?, ?) WHERE IdManifesto = ?";
         Connection c = getConnection();
+        String sql = "UPDATE tbl_Manifestos SET nrPlaca_Veiculo = ?, nmFilial_Origem = ?, nmFilial_Destino = ? WHERE IdManifesto = ?";
+        
         PreparedStatement ps = c.prepareStatement(sql);
+        ps = c.prepareStatement(sql);
         ps.setString(1, obj.getPlacaVeiculo());
         ps.setString(2, obj.getFilialOrigem());
         ps.setString(3, obj.getFilialDestino());
         ps.setInt(4, obj.getId());
         int registros = ps.executeUpdate();
-        closeConnection();
+        
         if (registros > 0) {
             return true;
         } else {
@@ -58,7 +60,7 @@ public class ManifestoData extends DataSource {
             m.setFilialOrigem(resultados.getString(3));
             m.setFilialDestino(resultados.getString(4));
         }
-        closeConnection();
+        
         return m;
     }
 
@@ -75,17 +77,21 @@ public class ManifestoData extends DataSource {
             Manifesto m = new Manifesto(r.getInt(1), r.getString(2), r.getString(3), r.getString(4));
             manifestos.add(m);
         }
-        closeConnection();
+        
         return manifestos;
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "DELETE FROM tbl_Manifestos WHERE IdManifesto = ?";
+        String sql = "UPDATE tbl_CTRCs_Manifestos SET IdManifesto = null  WHERE IdManifesto = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
+        ps.executeUpdate();
+        sql = "DELETE FROM tbl_Manifestos WHERE IdManifesto = ?";
+        ps = c.prepareStatement(sql);
+        ps.setInt(1, id);
         int registros = ps.executeUpdate();
-        closeConnection();
+        
         if (registros > 0) {
             return true;
         } else {

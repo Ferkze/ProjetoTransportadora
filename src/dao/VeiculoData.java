@@ -19,7 +19,7 @@ public class VeiculoData extends DataSource {
         ps.setString(1, v.getDesc());
         ps.setString(2, v.getNumeroPlaca());
         int registros = ps.executeUpdate();
-        closeConnection();
+        
         if (registros > 0) {
             return true;
         } else {
@@ -28,14 +28,14 @@ public class VeiculoData extends DataSource {
     }
 
     public boolean editar(Veiculo v) throws Exception {
-        String sql = "UPDATE FROM tbl_Veiculos (nrPlaca_Veiculo, nmFilial_Origem) VALUES (?, ?, ?) WHERE IdVeiculo = ?";
+        String sql = "UPDATE tbl_Veiculos SET nrPlaca_Veiculo = ?, nmFilial_Origem = ? WHERE IdVeiculo = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, v.getDesc());
         ps.setString(2, v.getNumeroPlaca());
         ps.setInt(3, v.getId());
         int registros = ps.executeUpdate();
-        closeConnection();
+        
         if (registros > 0) {
             return true;
         } else {
@@ -55,7 +55,7 @@ public class VeiculoData extends DataSource {
             v.setDesc(resultados.getString(2));
             v.setNumeroPlaca(resultados.getString(3));
         }
-        closeConnection();
+        
         return v;
     }
 
@@ -72,17 +72,22 @@ public class VeiculoData extends DataSource {
             Veiculo v = new Veiculo(r.getInt(1), r.getString(2), r.getString(3));
             veiculos.add(v);
         }
-        closeConnection();
+        
         return veiculos;
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "DELETE FROM tbl_Veiculos WHERE IdVeiculo = ?";
+        String sql = "UPDATE tbl_CTRCs_Manifestos SET IdVeiculo = null  WHERE IdVeiculo = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
+        ps.executeUpdate();
+        sql = "DELETE FROM tbl_Veiculos WHERE IdVeiculo = ?";
+        c = getConnection();
+        ps = c.prepareStatement(sql);
+        ps.setInt(1, id);
         int registros = ps.executeUpdate();
-        closeConnection();
+        
         if (registros > 0) {
             return true;
         } else {

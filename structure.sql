@@ -2,7 +2,7 @@
 	--Base de Dados
 */
 	--Criar Banco
-	--CREATE DATABASE db_Transposrtadora;
+	--CREATE DATABASE db_ProjetoTranspotadora;
 	USE db_ProjetoTranspotadora;
 
 	--sp_help tbl_CTRCs
@@ -180,7 +180,7 @@ IdCtrc INT FOREIGN KEY REFERENCES tbl_CTRCs (IdCtrc) NOT NULL
 	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Hipermercado Extra', 'Rua Maria da Penha, 3000-Centro', 'Cotia', 'SP', '22336655000155', '', '(11) 8899-5005')
 	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Lapidadora Sergipe', 'Rua Sol,8700-Bairro das Flores', 'Arau�', 'SE', '', '23165498700', '(79) 2233-4004')
 	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Distribuidora S�o Jo�o', 'Rua Airton Senna, 6500-Bairro Limeira', 'S�o Paulo', 'SP', '22558899000157', '', '(11) 2211-4003')
-	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Auto Pe�as Kabum', 'Rua Joaquim Nabuco, 37-Bairro Ferraz Alvim', 'Salvador', 'BA', '11447788000158', '', '(11) 7744-3002')
+	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('Auto Peças Kabum', 'Rua Joaquim Nabuco, 37-Bairro Ferraz Alvim', 'Salvador', 'BA', '11447788000158', '', '(11) 7744-3002')
 	INSERT INTO tbl_Clientes_Dest(nmCli_Destinatario,nmEndereco,nmCidade,nmUF,cnpjCliente, cpfCliente, nmTelefone) VALUES ('BIG Cell', 'Rua Netuno, 66-Bairro Limp�o', 'Petr�polis', 'RJ', '11223344000159', '', '(21) 6699-3001')
 
 
@@ -195,11 +195,11 @@ IdCtrc INT FOREIGN KEY REFERENCES tbl_CTRCs (IdCtrc) NOT NULL
 	--SELECT nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, FORMAT  (vlFrete,'c', 'pt-br') AS vlFrete FROM tbl_CTRCs_Manifestos
 	
 
-	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Jo�o da Silva','AAA-1111', 'CD Santos','CD Cotia', 'Pescados SP', 'Hipermercado Extra','5000', '3750',1,1,1,1,1,1)
-	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Maria do Luz,','BBA-2222', 'CD Minas Gerais','CD Aracaju','Min�rios Ouro', 'Lapidadora Sergipe','3950','12750',2,2,2,2,2,2)
-	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Fernando Gois','CCC-3333', 'CD Minas Gerais','CD S�o Paulo', 'Latic�nios da Vov�', 'Distribuidora S�o Jo�o','3000', '5300',3,3,3,3,3,3)
-    INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('M�rcia Feliz','DDD-4444', 'CD S�o Paulo','CD Bahia', 'Autometal', 'Auto Pe�as Kabum', '5000', '9750',4,4,4,4,4,4)
-	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Marcos Rueda','EEE-5555', 'CD Santos','CD Rio de Janeiro', 'Eletr�nicos SA', 'BIG Cell','900', '9310',5,5,5,5,5,5)
+	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Joao da Silva','AAA-1111', 'CD Santos','CD Cotia', 'Pescados SP', 'Hipermercado Extra','5000', '3750',1,1,1,1,1,1)
+	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Maria do Luz,','BBA-2222', 'CD Minas Gerais','CD Aracaju','Minerios Ouro', 'Lapidadora Sergipe','3950','12750',2,2,2,2,2,2)
+	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Fernando Gois','CCC-3333', 'CD Minas Gerais','CD Sao Paulo', 'Laticinios da Vovo', 'Distribuidora Sao João','3000', '5300',3,3,3,3,3,3)
+    INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Marcia Feliz','DDD-4444', 'CD Sao Paulo','CD Bahia', 'Autometal', 'Auto Pecas Kabum', '5000', '9750',4,4,4,4,4,4)
+	INSERT INTO tbl_CTRCs_Manifestos(nmMotorista, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino, nmCli_Rementente, nmCli_Destinatario, qtPesoFrete, vlFrete,IdMotorista, IdVeiculo,IdManifesto,IdCli_Reme,IdCli_Dest, IdCtrc) VALUES ('Marcos Rueda','EEE-5555', 'CD Santos','CD Rio de Janeiro', 'Eletronicos SA', 'BIG Cell','900', '9310',5,5,5,5,5,5)
 
 
 

@@ -21,7 +21,7 @@ public class MotoristaData extends DataSource {
         ps.setString(3, m.getSexo());
         ps.setString(4, m.getTelefone());
         int registros = ps.executeUpdate();
-        closeConnection();
+        
         if (registros > 0) {
             return true;
         } else {
@@ -30,7 +30,7 @@ public class MotoristaData extends DataSource {
     }
 
     public boolean editar(Motorista m) throws Exception {
-        String sql = "UPDATE FROM tbl_Motoristas (nmMotorista, dtNascimento, icSexo, nmTelefone) VALUES (?, ?, ?, ?) WHERE IdMotorista = ?";
+        String sql = "UPDATE tbl_Motoristas SET nmMotorista = ?, dtNascimento = ?, icSexo = ?, nmTelefone = ? WHERE IdMotorista = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, m.getNome());
@@ -39,7 +39,7 @@ public class MotoristaData extends DataSource {
         ps.setString(4, m.getTelefone());
         ps.setInt(5, m.getId());
         int registros = ps.executeUpdate();
-        closeConnection();
+        
         if (registros > 0) {
             return true;
         } else {
@@ -61,7 +61,7 @@ public class MotoristaData extends DataSource {
             m.setSexo(resultados.getString(4));
             m.setTelefone(resultados.getString(5));
         }
-        closeConnection();
+        
         return m;
     }
 
@@ -78,17 +78,22 @@ public class MotoristaData extends DataSource {
             Motorista m = new Motorista(r.getInt(1), r.getString(2), r.getString(3), r.getString(4), r.getString(5));
             motoristas.add(m);
         }
-        closeConnection();
+        
         return motoristas;
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "DELETE FROM tbl_Motoristas WHERE IdMotorista = ?";
+        String sql = "UPDATE tbl_CTRCs_Manifestos SET IdMotorista = null  WHERE IdMotorista = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
+        ps.executeUpdate();
+        sql = "DELETE FROM tbl_Motoristas WHERE IdMotorista = ?";
+        c = getConnection();
+        ps = c.prepareStatement(sql);
+        ps.setInt(1, id);
         int registros = ps.executeUpdate();
-        closeConnection();
+        
         if (registros > 0) {
             return true;
         } else {
