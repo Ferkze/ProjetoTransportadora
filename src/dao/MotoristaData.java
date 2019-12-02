@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import model.Motorista;
 
 public class MotoristaData extends DataSource {
+    public MotoristaData(Connection c) throws Exception {
+        super(c);
+    }
+
     public MotoristaData() throws Exception {
     }
 
@@ -62,20 +66,16 @@ public class MotoristaData extends DataSource {
         return m;
     }
 
-    public ArrayList<Motorista> buscarTudo(int limit) throws Exception {
-        if (limit == 0)
-            limit = 10;
-        String sql = "SELECT IdMotorista, nome, sexo, telefone FROM tbl_Motorista LIMIT ?";
+    public ArrayList<Motorista> buscarTudo() throws Exception {
+        String sql = "SELECT TOP 100 IdMotorista, nome, sexo, telefone FROM tbl_Motorista";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
-        ps.setInt(1, limit);
         ResultSet r = ps.executeQuery();
         ArrayList<Motorista> motoristas = new ArrayList<>();
         while (r.next()) {
             Motorista m = new Motorista(r.getInt(1), r.getString(2), r.getString(3), r.getString(4));
             motoristas.add(m);
         }
-
         return motoristas;
     }
 

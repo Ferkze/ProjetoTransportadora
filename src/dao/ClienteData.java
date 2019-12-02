@@ -11,6 +11,10 @@ import model.Cliente;
 public class ClienteData extends DataSource {
     public ClienteData() throws Exception {
     }
+    
+    public ClienteData(Connection c) throws Exception {
+        super(c);
+    }
 
     public boolean inserir(Cliente r) throws Exception {
         String sql = "INSERT INTO tbl_Cliente (nome, endereco, cidade, uf, cnpj, cpf, telefone) VALUES (?, ?, ?, ?)";
@@ -74,22 +78,19 @@ public class ClienteData extends DataSource {
         return r;
     }
 
-    public ArrayList<Cliente> buscarTudo(int limit) throws Exception {
-        if (limit == 0)
-            limit = 10;
-        String sql = "SELECT IdCliente, nome, endereco, cidade, uf, cnpj, cpf, telefone FROM tbl_Cliente LIMIT ?";
+    public ArrayList<Cliente> buscarTudo() throws Exception {
+        String sql = "SELECT TOP 100 IdCliente, nome, endereco, cidade, uf, telefone, cnpj, tipo_organizacao, cpf, sexo FROM tbl_Cliente";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
-        ps.setInt(1, limit);
         ResultSet rs = ps.executeQuery();
-        ArrayList<Cliente> remetentes = new ArrayList<>();
+        ArrayList<Cliente> clientes = new ArrayList<>();
         while (rs.next()) {
             Cliente r = new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-                    rs.getString(6), rs.getString(7), rs.getString(8));
-            remetentes.add(r);
+                    rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
+            clientes.add(r);
         }
 
-        return remetentes;
+        return clientes;
     }
 
     public boolean deletar(int id) throws Exception {

@@ -2,23 +2,31 @@
 package transportadora.view;
 
 import dao.CTRCData;
+import dao.ClienteData;
+import dao.MotoristaData;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import model.CTRC;
+import model.Cliente;
+import model.Motorista;
 
 
 public class jifCTRC extends javax.swing.JInternalFrame {
 
     private CTRC obj;
     private CTRCData DAO;
-    /**
-     * Creates new form jifManifesto
-     */
+    private DefaultComboBoxModel clientesDestModel;
+    private DefaultComboBoxModel clientesRemeModel;
+    private DefaultComboBoxModel motoristasModel;
+    
     public jifCTRC() {
         initComponents();
         estadoInicialCampos();
         obj = new CTRC();
         try {
             DAO = new CTRCData();
+            carregarEntidades();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -35,14 +43,12 @@ public class jifCTRC extends javax.swing.JInternalFrame {
 
         jlId = new javax.swing.JLabel();
         jlCliReme = new javax.swing.JLabel();
-        jtCliReme = new javax.swing.JTextField();
         jbNovo = new javax.swing.JButton();
         jbExcluir = new javax.swing.JButton();
         jbEditar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jbSalvar = new javax.swing.JButton();
         jlCliDest = new javax.swing.JLabel();
-        jtCliDest = new javax.swing.JTextField();
         jlDataEmissao = new javax.swing.JLabel();
         jlPesoFrete = new javax.swing.JLabel();
         jlValorFrete = new javax.swing.JLabel();
@@ -51,6 +57,15 @@ public class jifCTRC extends javax.swing.JInternalFrame {
         jtValorFrete = new javax.swing.JTextField();
         jtId = new javax.swing.JTextField();
         jbBuscar = new javax.swing.JButton();
+        jcbReme = new javax.swing.JComboBox<>();
+        jcbDest = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jcbMoto = new javax.swing.JComboBox<>();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jlistManifestos = new javax.swing.JList<>();
+        jcbManifestos = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -113,53 +128,75 @@ public class jifCTRC extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel1.setText("Motorista");
+
+        jLabel2.setText("Manifestos");
+
+        jScrollPane1.setViewportView(jlistManifestos);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlDataEmissao)
-                            .addComponent(jlCliDest)
-                            .addComponent(jlValorFrete))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jtDataEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jlPesoFrete)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jtPesoFrete, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jtCliDest)
-                            .addComponent(jtValorFrete, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlCliReme)
-                            .addComponent(jlId))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtCliReme))))
-                .addContainerGap(31, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbNovo)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbCancelar))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jcbMoto, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlDataEmissao)
+                                    .addComponent(jlCliDest)
+                                    .addComponent(jlValorFrete))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                                        .addComponent(jcbDest, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(12, 12, 12)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jtValorFrete)
+                                            .addComponent(jtDataEmissao, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jlPesoFrete)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jtPesoFrete, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlCliReme)
+                                    .addComponent(jlId))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jcbReme, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbExcluir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbSalvar)))
-                .addGap(102, 102, 102))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(40, 40, 40)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(jbEditar)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jbExcluir)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jbSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(jbNovo)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jbBuscar)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jbCancelar)))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                                    .addComponent(jcbManifestos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,35 +205,47 @@ public class jifCTRC extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlId, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCliReme)
-                    .addComponent(jtCliReme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jcbReme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCliDest)
-                    .addComponent(jtCliDest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jcbDest, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jcbMoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtDataEmissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlDataEmissao)
                     .addComponent(jlPesoFrete)
                     .addComponent(jtPesoFrete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlValorFrete)
                     .addComponent(jtValorFrete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(19, 19, 19)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jcbManifestos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNovo)
                     .addComponent(jbCancelar)
                     .addComponent(jbBuscar))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbEditar)
                     .addComponent(jbExcluir)
                     .addComponent(jbSalvar))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -223,8 +272,9 @@ public class jifCTRC extends javax.swing.JInternalFrame {
             atualizarCampos();
             
             jtId.setEnabled(false);
-            jtCliDest.setEnabled(true);
-            jtCliReme.setEnabled(true);
+            jcbDest.setEnabled(true);
+            jcbReme.setEnabled(true);
+            jcbMoto.setEnabled(true);
             jtDataEmissao.setEnabled(true);
             jtPesoFrete.setEnabled(true);
             jtValorFrete.setEnabled(true);
@@ -278,8 +328,9 @@ public class jifCTRC extends javax.swing.JInternalFrame {
         jtId.setText("0");
 
         jtId.setEnabled(false);
-        jtCliDest.setEnabled(true);
-        jtCliReme.setEnabled(true);
+        jcbDest.setEnabled(true);
+        jcbReme.setEnabled(true);
+        jcbMoto.setEnabled(true);
         jtDataEmissao.setEnabled(true);
         jtPesoFrete.setEnabled(true);
         jtValorFrete.setEnabled(true);
@@ -293,20 +344,27 @@ public class jifCTRC extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jbNovoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbExcluir;
     private javax.swing.JButton jbNovo;
     private javax.swing.JButton jbSalvar;
+    private javax.swing.JComboBox<String> jcbDest;
+    private javax.swing.JComboBox<String> jcbManifestos;
+    private javax.swing.JComboBox<String> jcbMoto;
+    private javax.swing.JComboBox<String> jcbReme;
     private javax.swing.JLabel jlCliDest;
     private javax.swing.JLabel jlCliReme;
     private javax.swing.JLabel jlDataEmissao;
     private javax.swing.JLabel jlId;
     private javax.swing.JLabel jlPesoFrete;
     private javax.swing.JLabel jlValorFrete;
-    private javax.swing.JTextField jtCliDest;
-    private javax.swing.JTextField jtCliReme;
+    private javax.swing.JList<String> jlistManifestos;
     private javax.swing.JTextField jtDataEmissao;
     private javax.swing.JTextField jtId;
     private javax.swing.JTextField jtPesoFrete;
@@ -315,8 +373,9 @@ public class jifCTRC extends javax.swing.JInternalFrame {
     
     public void atualizarCampos() {
         jtId.setText(obj.getId()+"");
-        jtCliDest.setText(obj.getNomeDest());
-        jtCliReme.setText(obj.getNomeReme());
+        jcbDest.setSelectedItem(obj.getDestinatario().getId());
+        jcbReme.setSelectedItem(obj.getRemetente().getId());
+        jcbMoto.setSelectedItem(obj.getMotorista().getId());
         jtDataEmissao.setText(obj.getDataEmissao());
         jtPesoFrete.setText(obj.getPeso()+"");
         jtValorFrete.setText(obj.getValor()+"");
@@ -326,8 +385,9 @@ public class jifCTRC extends javax.swing.JInternalFrame {
         limparCampos();
 
         jtId.setEnabled(true);
-        jtCliDest.setEnabled(false);
-        jtCliReme.setEnabled(false);
+        jcbDest.setEnabled(false);
+        jcbReme.setEnabled(false);
+        jcbMoto.setEnabled(false);
         jtDataEmissao.setEnabled(false);
         jtPesoFrete.setEnabled(false);
         jtValorFrete.setEnabled(false);
@@ -342,32 +402,27 @@ public class jifCTRC extends javax.swing.JInternalFrame {
     
     private void limparCampos() {
         jtId.setText("");
-        jtCliDest.setText("");
-        jtCliReme.setText("");
         jtDataEmissao.setText("");
         jtPesoFrete.setText("");
         jtValorFrete.setText("");
     }
 
     private void preencherObjeto() {
-        obj.setNomeDest(jtCliDest.getText());
-        obj.setNomeReme(jtCliReme.getText());
+        Cliente cd = obj.getDestinatario();
+        cd.setId((int) jcbDest.getSelectedItem());
+        obj.setcDest(cd);
+        Cliente cr = obj.getRemetente();
+        cr.setId((int) jcbReme.getSelectedItem());
+        obj.setRemetente(cr);
+        Motorista m = obj.getMotorista();
+        m.setId((int) jcbMoto.getSelectedItem());
+        obj.setMotorista(m);
         obj.setDataEmissao(jtDataEmissao.getText());
         obj.setPeso(Integer.parseInt(jtPesoFrete.getText()));
         obj.setValor(Float.parseFloat(jtValorFrete.getText()));
     }
 
     private boolean validarCampos() {
-        if (jtCliDest.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Digite a Filial de Origem");
-            jtCliDest.requestFocus();
-            return false;
-        }
-        if (jtCliReme.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Digite a Filial de Destino");
-            jtCliReme.requestFocus();
-            return false;
-        }
         if (!jtDataEmissao.getText().matches("^\\d{4}-\\d{2}-\\d{2}$")) {
             JOptionPane.showMessageDialog(this, "Digite a data no formado AAAA-MM-DD");
             jtDataEmissao.requestFocus();
@@ -384,5 +439,34 @@ public class jifCTRC extends javax.swing.JInternalFrame {
             return false;
         }
         return true;
+    }
+    
+    private void carregarEntidades() {
+        try {
+            ClienteData cd = new ClienteData(DAO.getConnection());
+            ArrayList<Cliente> clientes = cd.buscarTudo();
+            clientesDestModel = new DefaultComboBoxModel();
+            clientesRemeModel = new DefaultComboBoxModel();
+            for (int i = 0; i < clientes.size(); i++) {
+                clientesDestModel.addElement(clientes.get(i).getId());
+                clientesRemeModel.addElement(clientes.get(i).getId());
+                System.out.println(clientes.get(i).getId());
+            }
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao buscar clientes: "+e.toString(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        jcbDest.setModel(clientesDestModel);
+        jcbReme.setModel(clientesRemeModel);
+        try {
+            MotoristaData md = new MotoristaData(DAO.getConnection());
+            ArrayList<Motorista> motoristas = md.buscarTudo();
+            motoristasModel = new DefaultComboBoxModel();
+            for (int i = 0; i < motoristas.size(); i++) {
+                motoristasModel.addElement(motoristas.get(i).getId());
+            }
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao buscar motoristas: "+e.toString(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+        jcbMoto.setModel(motoristasModel);
     }
 }

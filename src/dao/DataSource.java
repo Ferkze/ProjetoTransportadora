@@ -19,6 +19,10 @@ public class DataSource {
 
     private Connection connection;
 
+    public DataSource(Connection c) {
+        this.connection = c;
+    }
+    
     public DataSource() {
         try {
             hostname = "localhost";

@@ -3,8 +3,9 @@ package model;
 public class CTRC {
 
     private int id;
-    private String nomeReme;
-    private String nomeDest;
+    private Cliente cReme;
+    private Cliente cDest;
+    private Motorista motorista;
     private String dataEmissao;
     private int peso;
     private float valor;
@@ -13,10 +14,18 @@ public class CTRC {
 
     }
 
-    public CTRC(int id, String nomeReme, String nomeDest, String dataEmissao, int peso, float valor) {
+    public CTRC(int id, Cliente reme, Cliente dest, Motorista m, String dataEmissao, int peso, float valor) {
         this.id = id;
-        this.nomeReme = nomeReme;
-        this.nomeDest = nomeDest;
+        this.cReme = reme;
+        this.cDest = dest;
+        this.motorista = m;
+        this.dataEmissao = dataEmissao;
+        this.peso = peso;
+        this.valor = valor;
+    }
+
+    public CTRC(int id, String dataEmissao, int peso, float valor) {
+        this.id = id;
         this.dataEmissao = dataEmissao;
         this.peso = peso;
         this.valor = valor;
@@ -50,20 +59,28 @@ public class CTRC {
         this.dataEmissao = dataEmissao;
     }
 
-    public String getNomeDest() {
-        return nomeDest;
+    public Cliente getRemetente() {
+        return cReme;
     }
 
-    public void setNomeDest(String nomeDest) {
-        this.nomeDest = nomeDest;
+    public void setRemetente(Cliente cReme) {
+        this.cReme = cReme;
     }
 
-    public String getNomeReme() {
-        return nomeReme;
+    public Cliente getDestinatario() {
+        return cDest;
     }
 
-    public void setNomeReme(String nomeReme) {
-        this.nomeReme = nomeReme;
+    public void setcDest(Cliente cDest) {
+        this.cDest = cDest;
+    }
+
+    public Motorista getMotorista() {
+        return motorista;
+    }
+
+    public void setMotorista(Motorista motorista) {
+        this.motorista = motorista;
     }
 
     public void setId(int id) {

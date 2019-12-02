@@ -7,7 +7,9 @@ public class Cliente {
     private String cidade;
     private String uf;
     private String cnpj;
+    private String tipoOrg;
     private String cpf;
+    private String sexo;
     private String telefone;
 
     public Cliente() {
@@ -24,6 +26,36 @@ public class Cliente {
         this.cnpj = cnpj;
         this.cpf = cpfCliente;
         this.telefone = telefone;
+    }
+
+    public Cliente(int id, String nome, String endereco, String cidade, String uf, String telefone, String cnpj, String tipoOrg, String cpf,
+            String sexo) {
+        this.id = id;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.cidade = cidade;
+        this.uf = uf;
+        this.cnpj = cnpj;
+        this.tipoOrg = tipoOrg;
+        this.sexo = sexo;
+        this.cpf = cpf;
+        this.telefone = telefone;
+    }
+
+    public String getTipoOrg() {
+        return tipoOrg;
+    }
+
+    public void setTipoOrg(String tipoOrg) {
+        this.tipoOrg = tipoOrg;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public int getId() {
