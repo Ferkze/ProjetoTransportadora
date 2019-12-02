@@ -13,7 +13,7 @@ public class MotoristaData extends DataSource {
     }
 
     public boolean inserir(Motorista m) throws Exception {
-        String sql = "INSERT INTO tbl_Motoristas (nmMotorista, dtNascimento, icSexo, nmTelefone) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO tbl_Motorista (nmMotorista, dtNascimento, icSexo, nmTelefone) VALUES (?, ?, ?, ?)";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, m.getNome());
@@ -30,7 +30,7 @@ public class MotoristaData extends DataSource {
     }
 
     public boolean editar(Motorista m) throws Exception {
-        String sql = "UPDATE FROM tbl_Motoristas (nmMotorista, dtNascimento, icSexo, nmTelefone) VALUES (?, ?, ?, ?) WHERE IdMotorista = ?";
+        String sql = "UPDATE FROM tbl_Motorista (nmMotorista, dtNascimento, icSexo, nmTelefone) VALUES (?, ?, ?, ?) WHERE IdMotorista = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, m.getNome());
@@ -48,7 +48,7 @@ public class MotoristaData extends DataSource {
     }
 
     public Motorista buscar(int id) throws Exception {
-        String sql = "SELECT IdMotorista, nmMotorista, dtNascimento, icSexo, nmTelefone FROM tbl_Motoristas WHERE IdMotorista = ?";
+        String sql = "SELECT IdMotorista, nmMotorista, dtNascimento, icSexo, nmTelefone FROM tbl_Motorista WHERE IdMotorista = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -68,7 +68,7 @@ public class MotoristaData extends DataSource {
     public ArrayList<Motorista> buscarTudo(int limit) throws Exception {
         if (limit == 0)
             limit = 10;
-        String sql = "SELECT IdMotorista, nmMotorista, dtNascimento, icSexo, nmTelefone FROM tbl_Motoristas LIMIT ?";
+        String sql = "SELECT IdMotorista, nmMotorista, dtNascimento, icSexo, nmTelefone FROM tbl_Motorista LIMIT ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, limit);
@@ -83,7 +83,7 @@ public class MotoristaData extends DataSource {
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "DELETE FROM tbl_Motoristas WHERE IdMotorista = ?";
+        String sql = "DELETE FROM tbl_Motorista WHERE IdMotorista = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);

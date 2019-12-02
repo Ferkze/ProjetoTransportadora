@@ -13,7 +13,7 @@ public class ManifestoData extends DataSource {
     }
 
     public boolean inserir(Manifesto obj) throws Exception {
-        String sql = "INSERT INTO tbl_Manifestos (nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO tbl_Manifesto (nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino) VALUES (?, ?, ?)";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, obj.getPlacaVeiculo());
@@ -29,7 +29,7 @@ public class ManifestoData extends DataSource {
     }
 
     public boolean editar(Manifesto obj) throws Exception {
-        String sql = "UPDATE FROM tbl_Manifestos (nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino) VALUES (?, ?, ?) WHERE IdManifesto = ?";
+        String sql = "UPDATE FROM tbl_Manifesto (nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino) VALUES (?, ?, ?) WHERE IdManifesto = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, obj.getPlacaVeiculo());
@@ -46,7 +46,7 @@ public class ManifestoData extends DataSource {
     }
 
     public Manifesto buscar(int id) throws Exception {
-        String sql = "SELECT IdManifesto, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino FROM tbl_Manifestos WHERE IdManifesto = ?";
+        String sql = "SELECT IdManifesto, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino FROM tbl_Manifesto WHERE IdManifesto = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -65,7 +65,7 @@ public class ManifestoData extends DataSource {
     public ArrayList<Manifesto> buscarTudo(int limit) throws Exception {
         if (limit == 0)
             limit = 10;
-        String sql = "SELECT IdManifesto, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino FROM tbl_Manifestos LIMIT ?";
+        String sql = "SELECT IdManifesto, nrPlaca_Veiculo, nmFilial_Origem, nmFilial_Destino FROM tbl_Manifesto LIMIT ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, limit);
@@ -80,7 +80,7 @@ public class ManifestoData extends DataSource {
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "DELETE FROM tbl_Manifestos WHERE IdManifesto = ?";
+        String sql = "DELETE FROM tbl_Manifesto WHERE IdManifesto = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);

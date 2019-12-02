@@ -13,7 +13,7 @@ public class CTRCData extends DataSource {
     }
 
     public boolean inserir(CTRC obj) throws Exception {
-        String sql = "INSERT INTO tbl_CTRCs (nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tbl_CTRC (nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES (?, ?, ?, ?, ?)";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, obj.getNomeReme());
@@ -31,7 +31,7 @@ public class CTRCData extends DataSource {
     }
 
     public boolean editar(CTRC obj) throws Exception {
-        String sql = "UPDATE FROM tbl_CTRCs (nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES (?, ?, ?, ?, ?) WHERE IdCtrc = ?";
+        String sql = "UPDATE FROM tbl_CTRC (nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES (?, ?, ?, ?, ?) WHERE IdCtrc = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, obj.getNomeReme());
@@ -50,7 +50,7 @@ public class CTRCData extends DataSource {
     }
 
     public CTRC buscar(int id) throws Exception {
-        String sql = "SELECT IdCtrc, nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete FROM tbl_CTRCs WHERE IdCtrc = ?";
+        String sql = "SELECT IdCtrc, nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete FROM tbl_CTRC WHERE IdCtrc = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -71,7 +71,7 @@ public class CTRCData extends DataSource {
     public ArrayList<CTRC> buscarTudo(int limit) throws Exception {
         if (limit == 0)
             limit = 10;
-        String sql = "SELECT IdCtrc, nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete FROM tbl_CTRCs LIMIT ?";
+        String sql = "SELECT IdCtrc, nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete FROM tbl_CTRC LIMIT ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, limit);
@@ -87,7 +87,7 @@ public class CTRCData extends DataSource {
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "DELETE FROM tbl_CTRCs WHERE IdCtrc = ?";
+        String sql = "DELETE FROM tbl_CTRC WHERE IdCtrc = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);

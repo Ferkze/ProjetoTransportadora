@@ -13,7 +13,7 @@ public class ClientesDestData extends DataSource {
     }
 
     public boolean inserir(ClientesDest r) throws Exception {
-        String sql = "INSERT INTO tbl_Clientes_Dest (nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO tbl_ClienteDest (nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone) VALUES (?, ?, ?, ?)";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, r.getNome());
@@ -33,7 +33,7 @@ public class ClientesDestData extends DataSource {
     }
 
     public boolean editar(ClientesDest r) throws Exception {
-        String sql = "UPDATE FROM tbl_Clientes_Dest (nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone) VALUES (?, ?, ?, ?) WHERE IdCli_Dest = ?";
+        String sql = "UPDATE FROM tbl_ClienteDest (nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone) VALUES (?, ?, ?, ?) WHERE IdCli_Dest = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, r.getNome());
@@ -54,7 +54,7 @@ public class ClientesDestData extends DataSource {
     }
 
     public ClientesDest buscar(int id) throws Exception {
-        String sql = "SELECT IdCli_Dest, nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone FROM tbl_Clientes_Dest WHERE IdCli_Dest = ?";
+        String sql = "SELECT IdCli_Dest, nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone FROM tbl_ClienteDest WHERE IdCli_Dest = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -77,7 +77,7 @@ public class ClientesDestData extends DataSource {
     public ArrayList<ClientesDest> buscarTudo(int limit) throws Exception {
         if (limit == 0)
             limit = 10;
-        String sql = "SELECT IdCli_Dest, nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone FROM tbl_Clientes_Dest LIMIT ?";
+        String sql = "SELECT IdCli_Dest, nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone FROM tbl_ClienteDest LIMIT ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, limit);
@@ -93,7 +93,7 @@ public class ClientesDestData extends DataSource {
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "DELETE FROM tbl_Clientes_Dest WHERE IdCli_Dest = ?";
+        String sql = "DELETE FROM tbl_ClienteDest WHERE IdCli_Dest = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);

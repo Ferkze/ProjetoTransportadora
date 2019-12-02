@@ -13,7 +13,7 @@ public class VeiculoData extends DataSource {
     }
 
     public boolean inserir(Veiculo v) throws Exception {
-        String sql = "INSERT INTO tbl_Veiculos (dsVeiculo, nrPlaca_Veiculo) VALUES (?, ?)";
+        String sql = "INSERT INTO tbl_Veiculo (dsVeiculo, nrPlaca_Veiculo) VALUES (?, ?)";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, v.getDesc());
@@ -28,7 +28,7 @@ public class VeiculoData extends DataSource {
     }
 
     public boolean editar(Veiculo v) throws Exception {
-        String sql = "UPDATE FROM tbl_Veiculos (nrPlaca_Veiculo, nmFilial_Origem) VALUES (?, ?, ?) WHERE IdVeiculo = ?";
+        String sql = "UPDATE FROM tbl_Veiculo (nrPlaca_Veiculo, nmFilial_Origem) VALUES (?, ?, ?) WHERE IdVeiculo = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, v.getDesc());
@@ -44,7 +44,7 @@ public class VeiculoData extends DataSource {
     }
 
     public Veiculo buscar(int id) throws Exception {
-        String sql = "SELECT IdVeiculo, dsVeiculo, nrPlaca_Veiculo FROM tbl_Veiculos WHERE IdVeiculo = ?";
+        String sql = "SELECT IdVeiculo, dsVeiculo, nrPlaca_Veiculo FROM tbl_Veiculo WHERE IdVeiculo = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -62,7 +62,7 @@ public class VeiculoData extends DataSource {
     public ArrayList<Veiculo> buscarTudo(int limit) throws Exception {
         if (limit == 0)
             limit = 10;
-        String sql = "SELECT IdVeiculo, dsVeiculo, nrPlaca_Veiculo FROM tbl_Veiculos LIMIT ?";
+        String sql = "SELECT IdVeiculo, dsVeiculo, nrPlaca_Veiculo FROM tbl_Veiculo LIMIT ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, limit);
@@ -77,7 +77,7 @@ public class VeiculoData extends DataSource {
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "DELETE FROM tbl_Veiculos WHERE IdVeiculo = ?";
+        String sql = "DELETE FROM tbl_Veiculo WHERE IdVeiculo = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
