@@ -1,12 +1,14 @@
 
 package model;
 
+import java.util.ArrayList;
+
 public class Manifesto {
-    
-   private int id;
-   private String placaVeiculo;
-   private String filialOrigem ;
-   private String filialDestino;
+
+    private int id;
+    private ArrayList<Veiculo> veiculos;
+    private String filialOrigem;
+    private String filialDestino;
 
     /**
      * @return the id
@@ -22,18 +24,24 @@ public class Manifesto {
         this.id = id;
     }
 
-    /**
-     * @return the placa
-     */
-    public String getPlacaVeiculo() {
-        return this.placaVeiculo;
+    public ArrayList<Veiculo> getVeiculos() {
+        return this.veiculos;
     }
 
-    /**
-     * @param placa the placa to set
-     */
-    public void setPlacaVeiculo(String placaVeiculo) {
-        this.placaVeiculo = placaVeiculo;
+    public void setVeiculos(ArrayList<Veiculo> veiculos) {
+        this.veiculos = veiculos;
+    }
+
+    public void addVeiculo(Veiculo veiculo) {
+        this.veiculos.add(veiculo);
+    }
+
+    public void removeVeiculo(int index) {
+        if (index < this.veiculos.size()) {
+            this.veiculos.remove(index);
+        } else {
+            System.out.print("Tentou remover item "+index+" inexistente");
+        }
     }
 
     /**
@@ -65,13 +73,22 @@ public class Manifesto {
     }
 
     public Manifesto() {
+        this.veiculos = new ArrayList<Veiculo>();
     }
 
-    public Manifesto(int id, String placaVeiculo, String filialOrigem, String filialDestino) {
+    public Manifesto(int id, String filialOrigem, String filialDestino) {
         this.id = id;
-        this.placaVeiculo = placaVeiculo;
         this.filialOrigem = filialOrigem;
         this.filialDestino = filialDestino;
+        this.veiculos = new ArrayList<Veiculo>();
     }
-     
+
+    public Manifesto(int id, String filialOrigem, String filialDestino, ArrayList<Veiculo> veiculos) {
+        this.id = id;
+        this.filialOrigem = filialOrigem;
+        this.filialDestino = filialDestino;
+        this.veiculos = new ArrayList<Veiculo>();
+        this.veiculos.addAll(veiculos);
+    }
+
 }

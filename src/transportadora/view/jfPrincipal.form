@@ -27,8 +27,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jbCliReme" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
-                  <Component id="jbCliDest" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                  <Component id="jbCliente" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                   <Component id="jbCTRC" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                   <Component id="jbManifesto" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                   <Component id="jbMotorista" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
@@ -49,17 +48,15 @@
                   <Component id="jdpPrincipal" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jbManifesto" min="-2" pref="82" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jbCTRC" min="-2" pref="76" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Component id="jbCliReme" min="-2" pref="79" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jbCliDest" min="-2" pref="73" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jbCliente" min="-2" pref="79" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jbMotorista" min="-2" pref="65" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jbVeiculo" min="-2" pref="63" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jbRelatorio" min="-2" pref="63" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -106,20 +103,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCTRCActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jbCliReme">
+    <Component class="javax.swing.JButton" name="jbCliente">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cliente Remetente"/>
+        <Property name="text" type="java.lang.String" value="Cliente"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCliRemeActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="jbCliDest">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cliente Destinat&#xe1;rio"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbCliDestActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbClienteActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jbMotorista">

@@ -174,17 +174,6 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
         try {
             obj = DAO.buscar(Integer.parseInt(jtId.getText()));
             atualizarCampos();
-            
-            jtId.setEnabled(false);
-            jtPlaca.setEnabled(true);
-            jtDescricao.setEnabled(true);
-
-            jbBuscar.setEnabled(false);
-            jbNovo.setEnabled(false);
-            jbCancelar.setEnabled(true);
-            jbEditar.setEnabled(true);
-            jbExcluir.setEnabled(true);
-            jbSalvar.setEnabled(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao Buscar: " + e.getMessage(), "Buscar", JOptionPane.ERROR_MESSAGE);
         }
@@ -243,7 +232,9 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
         try {
             if (validarCampos()) {
                 preencherObjeto();
-                if (DAO.inserir(obj)) {
+                obj = DAO.inserir(obj);
+                if (obj.getId() != 0) {
+                    atualizarCampos();
                     JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
                 } else {
                     JOptionPane.showMessageDialog(this, "Erro ao Salvar");
@@ -274,6 +265,17 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
         jtId.setText(obj.getId()+"");
         jtPlaca.setText(obj.getNumeroPlaca());
         jtDescricao.setText(obj.getDesc());
+            
+        jtId.setEnabled(false);
+        jtPlaca.setEnabled(true);
+        jtDescricao.setEnabled(true);
+
+        jbBuscar.setEnabled(false);
+        jbNovo.setEnabled(false);
+        jbCancelar.setEnabled(true);
+        jbEditar.setEnabled(true);
+        jbExcluir.setEnabled(true);
+        jbSalvar.setEnabled(true);
     }
     
     private void estadoInicialCampos() {

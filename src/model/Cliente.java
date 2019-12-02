@@ -1,28 +1,28 @@
 package model;
 
-public class ClientesDest {
+public class Cliente {
     private int id;
     private String nome;
     private String endereco;
     private String cidade;
     private String uf;
-    private String cnpjCliente;
-    private String cpfCliente;
+    private String cnpj;
+    private String cpf;
     private String telefone;
 
-    public ClientesDest() {
+    public Cliente() {
 
     }
 
-    public ClientesDest(int id, String nome, String endereco, String cidade, String uf, String cnpjCliente,
-            String cpfCliente, String telefone) {
+    public Cliente(int id, String nome, String endereco, String cidade, String uf, String cnpj, String cpfCliente,
+            String telefone) {
         this.id = id;
         this.nome = nome;
         this.endereco = endereco;
         this.cidade = cidade;
         this.uf = uf;
-        this.cnpjCliente = cnpjCliente;
-        this.cpfCliente = cpfCliente;
+        this.cnpj = cnpj;
+        this.cpf = cpfCliente;
         this.telefone = telefone;
     }
 
@@ -38,20 +38,20 @@ public class ClientesDest {
         this.telefone = telefone;
     }
 
-    public String getCpfCliente() {
-        return cpfCliente;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCpfCliente(String cpfCliente) {
-        this.cpfCliente = cpfCliente;
+    public void setCpf(String cpfCliente) {
+        this.cpf = cpfCliente;
     }
 
-    public String getCnpjCliente() {
-        return cnpjCliente;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setCnpjCliente(String cnpjCliente) {
-        this.cnpjCliente = cnpjCliente;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public String getUf() {

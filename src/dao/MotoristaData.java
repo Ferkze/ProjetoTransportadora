@@ -13,13 +13,12 @@ public class MotoristaData extends DataSource {
     }
 
     public boolean inserir(Motorista m) throws Exception {
-        String sql = "INSERT INTO tbl_Motorista (nmMotorista, dtNascimento, icSexo, telefone) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO tbl_Motorista (nome, sexo, telefone) VALUES (?, ?, ?, ?)";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, m.getNome());
-        ps.setString(2, m.getNascimento());
-        ps.setString(3, m.getSexo());
-        ps.setString(4, m.getTelefone());
+        ps.setString(2, m.getSexo());
+        ps.setString(3, m.getTelefone());
         int registros = ps.executeUpdate();
 
         if (registros > 0) {
@@ -30,14 +29,13 @@ public class MotoristaData extends DataSource {
     }
 
     public boolean editar(Motorista m) throws Exception {
-        String sql = "UPDATE tbl_Motorista SET nome = ?, icSexo = ? WHERE IdMotorista = ?";
+        String sql = "UPDATE tbl_Motorista SET nome = ?, sexo = ?, telefone = ? WHERE IdMotorista = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, m.getNome());
-        ps.setString(2, m.getNascimento());
-        ps.setString(3, m.getSexo());
-        ps.setString(4, m.getTelefone());
-        ps.setInt(5, m.getId());
+        ps.setString(2, m.getSexo());
+        ps.setString(3, m.getTelefone());
+        ps.setInt(4, m.getId());
         int registros = ps.executeUpdate();
 
         if (registros > 0) {
@@ -48,7 +46,7 @@ public class MotoristaData extends DataSource {
     }
 
     public Motorista buscar(int id) throws Exception {
-        String sql = "SELECT IdMotorista, nmMotorista, dtNascimento, icSexo, telefone FROM tbl_Motorista WHERE IdMotorista = ?";
+        String sql = "SELECT IdMotorista, nome, sexo, telefone FROM tbl_Motorista WHERE IdMotorista = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -57,9 +55,8 @@ public class MotoristaData extends DataSource {
         if (resultados.next()) {
             m.setId(resultados.getInt(1));
             m.setNome(resultados.getString(2));
-            m.setNascimento(resultados.getString(3));
-            m.setSexo(resultados.getString(4));
-            m.setTelefone(resultados.getString(5));
+            m.setSexo(resultados.getString(3));
+            m.setTelefone(resultados.getString(4));
         }
 
         return m;
@@ -68,14 +65,14 @@ public class MotoristaData extends DataSource {
     public ArrayList<Motorista> buscarTudo(int limit) throws Exception {
         if (limit == 0)
             limit = 10;
-        String sql = "SELECT IdMotorista, nmMotorista, dtNascimento, icSexo, telefone FROM tbl_Motorista LIMIT ?";
+        String sql = "SELECT IdMotorista, nome, sexo, telefone FROM tbl_Motorista LIMIT ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, limit);
         ResultSet r = ps.executeQuery();
         ArrayList<Motorista> motoristas = new ArrayList<>();
         while (r.next()) {
-            Motorista m = new Motorista(r.getInt(1), r.getString(2), r.getString(3), r.getString(4), r.getString(5));
+            Motorista m = new Motorista(r.getInt(1), r.getString(2), r.getString(3), r.getString(4));
             motoristas.add(m);
         }
 

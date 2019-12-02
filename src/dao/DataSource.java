@@ -23,8 +23,8 @@ public class DataSource {
         try {
             hostname = "localhost";
             port = 1433;
-            database = "db_ProjetoTranspotadora";
-            username = "SA";
+            database = "db_ProjetoTransportadora";
+            username = "sa";
             password = "FATECSBC";
 
             String url = "jdbc:jtds:sqlserver://" + hostname + ":" + port + "/" + database;
@@ -32,11 +32,11 @@ public class DataSource {
             DriverManager.registerDriver(new net.sourceforge.jtds.jdbc.Driver());
             connection = DriverManager.getConnection(url, username, password);
 
-            System.out.println("Deu Certo!");
+            System.out.println("Conexão bem sucedida!");
         } catch (SQLException ex) {
-            System.err.println("ERRO na Conexão" + ex.getMessage());
+            System.err.println("Erro na Conexão: " + ex.getMessage());
         } catch (Exception ex) {
-            System.err.println("ERRO GERAL" + ex.getMessage());
+            System.err.println("Erro de excessão: " + ex.getMessage());
         }
     }
 
@@ -48,7 +48,7 @@ public class DataSource {
         try {
             connection.close();
         } catch (Exception ex) {
-            System.err.println("Erro ao desconectar" + ex.getMessage());
+            System.err.println("Erro ao desconectar: " + ex.getMessage());
         }
     }
 }
