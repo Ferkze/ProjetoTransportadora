@@ -13,7 +13,7 @@ public class CTRCData extends DataSource {
     }
 
     public boolean inserir(CTRC obj) throws Exception {
-        String sql = "INSERT INTO tbl_CTRC (nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tbl_CTRC (nmCli_Rementente, nome, dtEmissao, qtPesoFrete, vlFrete) VALUES (?, ?, ?, ?, ?)";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, obj.getNomeReme());
@@ -22,7 +22,6 @@ public class CTRCData extends DataSource {
         ps.setInt(4, obj.getPeso());
         ps.setFloat(5, obj.getValor());
         int registros = ps.executeUpdate();
-        closeConnection();
         if (registros > 0) {
             return true;
         } else {
@@ -31,7 +30,7 @@ public class CTRCData extends DataSource {
     }
 
     public boolean editar(CTRC obj) throws Exception {
-        String sql = "UPDATE FROM tbl_CTRC (nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete) VALUES (?, ?, ?, ?, ?) WHERE IdCtrc = ?";
+        String sql = "UPDATE tbl_CTRC SET nmCli_Rementente = ?, nome = ?, dtEmissao = ?, qtPesoFrete = ?, vlFrete = ? WHERE IdCtrc = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, obj.getNomeReme());
@@ -41,7 +40,7 @@ public class CTRCData extends DataSource {
         ps.setFloat(5, obj.getValor());
         ps.setInt(6, obj.getId());
         int registros = ps.executeUpdate();
-        closeConnection();
+
         if (registros > 0) {
             return true;
         } else {
@@ -50,7 +49,7 @@ public class CTRCData extends DataSource {
     }
 
     public CTRC buscar(int id) throws Exception {
-        String sql = "SELECT IdCtrc, nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete FROM tbl_CTRC WHERE IdCtrc = ?";
+        String sql = "SELECT IdCtrc, nmCli_Rementente, nome, dtEmissao, qtPesoFrete, vlFrete FROM tbl_CTRC WHERE IdCtrc = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -64,14 +63,14 @@ public class CTRCData extends DataSource {
             ctrc.setPeso(resultados.getInt(5));
             ctrc.setValor(resultados.getFloat(6));
         }
-        closeConnection();
+
         return ctrc;
     }
 
     public ArrayList<CTRC> buscarTudo(int limit) throws Exception {
         if (limit == 0)
             limit = 10;
-        String sql = "SELECT IdCtrc, nmCli_Rementente, nmCli_Destinatario, dtEmissao, qtPesoFrete, vlFrete FROM tbl_CTRC LIMIT ?";
+        String sql = "SELECT IdCtrc, nmCli_Rementente, nome, dtEmissao, qtPesoFrete, vlFrete FROM tbl_CTRC LIMIT ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, limit);
@@ -82,17 +81,20 @@ public class CTRCData extends DataSource {
                     r.getFloat(6));
             ctrcs.add(ctrc);
         }
-        closeConnection();
+
         return ctrcs;
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "DELETE FROM tbl_CTRC WHERE IdCtrc = ?";
+        String sql = "UPDATE tbl_CTRCManifesto SET IdCtrc = null WHERE IdCtrc = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
+        sql = "DELETE FROM tbl_CTRCs WHERE IdCtrc = ?";
+        ps = c.prepareStatement(sql);
+        ps.setInt(1, id);
         int registros = ps.executeUpdate();
-        closeConnection();
+
         if (registros > 0) {
             return true;
         } else {

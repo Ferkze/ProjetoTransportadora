@@ -13,7 +13,7 @@ public class ClientesRemeData extends DataSource {
     }
 
     public boolean inserir(ClientesReme r) throws Exception {
-        String sql = "INSERT INTO tbl_ClienteReme (nmCli_Rementente, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO tbl_Clientes_Reme (nmCli_Rementente, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone) VALUES (?, ?, ?, ?)";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, r.getNome());
@@ -24,7 +24,7 @@ public class ClientesRemeData extends DataSource {
         ps.setString(6, r.getCpfCliente());
         ps.setString(7, r.getTelefone());
         int registros = ps.executeUpdate();
-        closeConnection();
+
         if (registros > 0) {
             return true;
         } else {
@@ -33,7 +33,7 @@ public class ClientesRemeData extends DataSource {
     }
 
     public boolean editar(ClientesReme r) throws Exception {
-        String sql = "UPDATE FROM tbl_ClienteReme (nmCli_Rementente, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone) VALUES (?, ?, ?, ?) WHERE IdCli_Reme = ?";
+        String sql = "UPDATE tbl_Clientes SET nmCli_Rementente = ?, nmEndereco = ?, nmCidade = ?, nmUF = ?, cnpjCliente = ?, cpfCliente = ?, nmTelefone = ? WHERE IdCli_Reme = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, r.getNome());
@@ -45,7 +45,7 @@ public class ClientesRemeData extends DataSource {
         ps.setString(7, r.getTelefone());
         ps.setInt(8, r.getId());
         int registros = ps.executeUpdate();
-        closeConnection();
+
         if (registros > 0) {
             return true;
         } else {
@@ -54,7 +54,7 @@ public class ClientesRemeData extends DataSource {
     }
 
     public ClientesReme buscar(int id) throws Exception {
-        String sql = "SELECT IdCli_Reme, nmCli_Rementente, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone FROM tbl_ClienteReme WHERE IdCli_Reme = ?";
+        String sql = "SELECT IdCli_Reme, nmCli_Rementente, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone FROM tbl_Clientes_Reme WHERE IdCli_Reme = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -70,14 +70,14 @@ public class ClientesRemeData extends DataSource {
             r.setCpfCliente(resultados.getString(7));
             r.setTelefone(resultados.getString(8));
         }
-        closeConnection();
+
         return r;
     }
 
     public ArrayList<ClientesReme> buscarTudo(int limit) throws Exception {
         if (limit == 0)
             limit = 10;
-        String sql = "SELECT IdCli_Reme, nmCli_Rementente, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone FROM tbl_ClienteReme LIMIT ?";
+        String sql = "SELECT IdCli_Reme, nmCli_Rementente, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone FROM tbl_Clientes_Reme LIMIT ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, limit);
@@ -88,17 +88,22 @@ public class ClientesRemeData extends DataSource {
                     rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
             remetentes.add(r);
         }
-        closeConnection();
+
         return remetentes;
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "DELETE FROM tbl_ClienteReme WHERE IdCli_Reme = ?";
+        String sql = "UPDATE tbl_ClienteCTRC SET IdClienteReme = null  WHERE IdClienteReme = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
+        ps.executeUpdate();
+        sql = "DELETE FROM tbl_Clientes WHERE IdCliente = ?";
+        c = getConnection();
+        ps = c.prepareStatement(sql);
+        ps.setInt(1, id);
         int registros = ps.executeUpdate();
-        closeConnection();
+
         if (registros > 0) {
             return true;
         } else {

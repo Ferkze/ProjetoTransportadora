@@ -223,7 +223,7 @@ public class jifManifesto extends javax.swing.JInternalFrame {
         try {
             if (validarCampos()) {
                 if (preencherObjeto()) {
-                    if (DAO.inserir(obj)) {
+                    if (DAO.editar(obj)) {
                         JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
                         jbCancelarActionPerformed(evt);
                     } else {

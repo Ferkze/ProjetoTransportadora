@@ -13,7 +13,7 @@ public class ClientesDestData extends DataSource {
     }
 
     public boolean inserir(ClientesDest r) throws Exception {
-        String sql = "INSERT INTO tbl_ClienteDest (nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO tbl_ClienteDest (nome, endereco, nmCidade, uf, cnpj, cpf, telefone) VALUES (?, ?, ?, ?)";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, r.getNome());
@@ -24,7 +24,7 @@ public class ClientesDestData extends DataSource {
         ps.setString(6, r.getCpfCliente());
         ps.setString(7, r.getTelefone());
         int registros = ps.executeUpdate();
-        closeConnection();
+
         if (registros > 0) {
             return true;
         } else {
@@ -33,7 +33,7 @@ public class ClientesDestData extends DataSource {
     }
 
     public boolean editar(ClientesDest r) throws Exception {
-        String sql = "UPDATE FROM tbl_ClienteDest (nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone) VALUES (?, ?, ?, ?) WHERE IdCli_Dest = ?";
+        String sql = "UPDATE tbl_Cliente SET nome = ?, endereco = ?, nmCidade = ?, uf = ?, cnpj = ?, cpf = ?, telefone = ? WHERE IdCliente = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, r.getNome());
@@ -45,7 +45,7 @@ public class ClientesDestData extends DataSource {
         ps.setString(7, r.getTelefone());
         ps.setInt(8, r.getId());
         int registros = ps.executeUpdate();
-        closeConnection();
+
         if (registros > 0) {
             return true;
         } else {
@@ -54,7 +54,7 @@ public class ClientesDestData extends DataSource {
     }
 
     public ClientesDest buscar(int id) throws Exception {
-        String sql = "SELECT IdCli_Dest, nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone FROM tbl_ClienteDest WHERE IdCli_Dest = ?";
+        String sql = "SELECT IdCliente, nome, endereco, nmCidade, uf, cnpj, cpf, telefone FROM tbl_ClienteDest WHERE IdCliente = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -70,14 +70,14 @@ public class ClientesDestData extends DataSource {
             r.setCpfCliente(resultados.getString(7));
             r.setTelefone(resultados.getString(8));
         }
-        closeConnection();
+
         return r;
     }
 
     public ArrayList<ClientesDest> buscarTudo(int limit) throws Exception {
         if (limit == 0)
             limit = 10;
-        String sql = "SELECT IdCli_Dest, nmCli_Destinatario, nmEndereco, nmCidade, nmUF, cnpjCliente, cpfCliente, nmTelefone FROM tbl_ClienteDest LIMIT ?";
+        String sql = "SELECT IdCliente, nome, endereco, nmCidade, uf, cnpj, cpf, telefone FROM tbl_ClienteDest LIMIT ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, limit);
@@ -88,17 +88,21 @@ public class ClientesDestData extends DataSource {
                     rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
             remetentes.add(r);
         }
-        closeConnection();
+
         return remetentes;
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "DELETE FROM tbl_ClienteDest WHERE IdCli_Dest = ?";
+        String sql = "UPDATE tbl_ClienteCTRC SET IdCliente = null  WHERE IdCliente = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
-        int registros = ps.executeUpdate();
-        closeConnection();
+        ps.executeUpdate();
+        sql = "DELETE FROM tbl_Clientes_Dest WHERE IdCliente = ?";
+        PreparedStatement ps2 = c.prepareStatement(sql);
+        ps2.setInt(1, id);
+        int registros = ps2.executeUpdate();
+
         if (registros > 0) {
             return true;
         } else {
