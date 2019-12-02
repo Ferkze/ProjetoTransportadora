@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class CTRC {
 
     private int id;
@@ -7,11 +9,12 @@ public class CTRC {
     private Cliente cDest;
     private Motorista motorista;
     private String dataEmissao;
+    private ArrayList<Manifesto> manifestos;
     private int peso;
     private float valor;
 
     public CTRC() {
-
+        this.manifestos = new ArrayList<Manifesto>();
     }
 
     public CTRC(int id, Cliente reme, Cliente dest, Motorista m, String dataEmissao, int peso, float valor) {
@@ -22,6 +25,7 @@ public class CTRC {
         this.dataEmissao = dataEmissao;
         this.peso = peso;
         this.valor = valor;
+        this.manifestos = new ArrayList<Manifesto>();
     }
 
     public CTRC(int id, String dataEmissao, int peso, float valor) {
@@ -29,6 +33,7 @@ public class CTRC {
         this.dataEmissao = dataEmissao;
         this.peso = peso;
         this.valor = valor;
+        this.manifestos = new ArrayList<Manifesto>();
     }
 
     public int getId() {
@@ -87,4 +92,19 @@ public class CTRC {
         this.id = id;
     }
 
+    public ArrayList<Manifesto> getManifestos() {
+        return manifestos;
+    }
+
+    public void setManifestos(ArrayList<Manifesto> ms) {
+        manifestos = ms;
+    }
+
+    public void addManifesto(Manifesto m) {
+        manifestos.add(m);
+    }
+
+    public void removeManifesto(int i) {
+        manifestos.remove(i);
+    }
 }

@@ -226,7 +226,6 @@ public class jifManifesto extends javax.swing.JInternalFrame {
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         try {
             obj = DAO.buscar(Integer.parseInt(jtId.getText()));
-            System.out.println(obj.getId());
             if (obj.getId() == 0) {
                 JOptionPane.showMessageDialog(this, "Não encontrado");
                 return;

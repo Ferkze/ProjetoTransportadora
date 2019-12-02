@@ -16,12 +16,15 @@ public class CTRCData extends DataSource {
     }
 
     public boolean inserir(CTRC obj) throws Exception {
-        String sql = "INSERT INTO tbl_CTRC (dtEmissao, qtPesoFrete, vlFrete) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO tbl_CTRC (dtEmissao, qtPesoFrete, vlFrete, IdClienteDest, IdClienteReme, IdMotorista) VALUES (?, ?, ?, ?, ?, ?)";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, obj.getDataEmissao());
         ps.setInt(2, obj.getPeso());
         ps.setFloat(3, obj.getValor());
+        ps.setInt(4, obj.getDestinatario().getId());
+        ps.setInt(5, obj.getRemetente().getId());
+        ps.setInt(6, obj.getMotorista().getId());
         int registros = ps.executeUpdate();
         if (registros > 0) {
             return true;
@@ -127,7 +130,7 @@ public class CTRCData extends DataSource {
         }
     }
     public boolean removerManifesto(int id, int idManifesto) throws Exception {
-        String sql = "DELETE FROM tbl_CTRCManifesto WHERE IdManifesto = ?, IdCtrc= ?";
+        String sql = "DELETE FROM tbl_CTRCManifesto WHERE IdManifesto = ? AND IdCtrc = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);

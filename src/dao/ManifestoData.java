@@ -68,20 +68,16 @@ public class ManifestoData extends DataSource {
 
         return m;
     }
-    public ArrayList<Manifesto> buscarTudo(int limit) throws Exception {
-        if (limit == 0)
-            limit = 10;
-        String sql = "SELECT IdManifesto, nmFilial_Origem, nmFilial_Destino FROM tbl_Manifesto LIMIT ?";
+    public ArrayList<Manifesto> buscarTudo() throws Exception {
+        String sql = "SELECT TOP 100 IdManifesto, nmFilial_Origem, nmFilial_Destino FROM tbl_Manifesto";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
-        ps.setInt(1, limit);
         ResultSet r = ps.executeQuery();
         ArrayList<Manifesto> manifestos = new ArrayList<>();
         while (r.next()) {
             Manifesto m = new Manifesto(r.getInt(1), r.getString(2), r.getString(3));
             manifestos.add(m);
         }
-
         return manifestos;
     }
 
@@ -122,7 +118,7 @@ public class ManifestoData extends DataSource {
     }
 
     public boolean removerVeiculo(int id, int idVeiculo) throws Exception {
-        String sql = "DELETE FROM tbl_ManifestoVeiculo WHERE IdManifesto = ?, IdVeiculo = ?";
+        String sql = "DELETE FROM tbl_ManifestoVeiculo WHERE IdManifesto = ? AND IdVeiculo = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
