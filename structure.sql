@@ -93,11 +93,11 @@ INSERT INTO tbl_Motorista (nome, sexo, telefone) VALUES ('Marcos Rueda', 'M', '(
 	-- DELETE tbl_Manifesto WHERE IdManifesto>'0'
 	-- SELECT * FROM tbl_Manifesto
 
-INSERT INTO tbl_Manifesto (IdVeiculo, nmFilial_Origem, nmFilial_Destino) VALUES (1, 'CD Santos','CD Cotia');
-INSERT INTO tbl_Manifesto (IdVeiculo, nmFilial_Origem, nmFilial_Destino) VALUES (2, 'CD Minas Gerais','CD Aracaju');
-INSERT INTO tbl_Manifesto (IdVeiculo, nmFilial_Origem, nmFilial_Destino) VALUES (3, 'CD Minas Gerais','CD São Paulo');
-INSERT INTO tbl_Manifesto (IdVeiculo, nmFilial_Origem, nmFilial_Destino) VALUES (4, 'CD São Paulo','CD Bahia');
-INSERT INTO tbl_Manifesto (IdVeiculo, nmFilial_Origem, nmFilial_Destino) VALUES (5, 'CD Santos','CD Rio de Janeiro');
+INSERT INTO tbl_Manifesto (nmFilial_Origem, nmFilial_Destino) VALUES ('CD Santos','CD Cotia');
+INSERT INTO tbl_Manifesto (nmFilial_Origem, nmFilial_Destino) VALUES ('CD Minas Gerais','CD Aracaju');
+INSERT INTO tbl_Manifesto (nmFilial_Origem, nmFilial_Destino) VALUES ('CD Minas Gerais','CD São Paulo');
+INSERT INTO tbl_Manifesto (nmFilial_Origem, nmFilial_Destino) VALUES ('CD São Paulo','CD Bahia');
+INSERT INTO tbl_Manifesto (nmFilial_Origem, nmFilial_Destino) VALUES ('CD Santos','CD Rio de Janeiro');
 
 	-- Inserir Cliente
 
