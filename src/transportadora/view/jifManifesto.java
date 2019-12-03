@@ -269,12 +269,24 @@ public class jifManifesto extends javax.swing.JInternalFrame {
     private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
         try {
             if (validarCampos()) {
+                
                 if (preencherObjeto()) {
-                    if (DAO.editar(obj)) {
-                        JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
-                        jbCancelarActionPerformed(evt);
+                    if(obj.getId() > 0) {
+                        if (DAO.editar(obj)) {
+                            JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
+                            jbCancelarActionPerformed(evt);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                        }
                     } else {
-                        JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                        DAO.inserir(obj);
+                        if (obj.getId() != 0) {
+                            atualizarCampos();
+                            JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
+                            jbCancelarActionPerformed(evt);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                        }
                     }
                 }
             }
@@ -287,8 +299,9 @@ public class jifManifesto extends javax.swing.JInternalFrame {
         int index = jlistVeiculos.getSelectedIndex();
         if (index == -1) return;
         try {
+            Veiculo v = obj.getVeiculos().get(index);
             if (obj.getId() != 0) {
-                DAO.removerVeiculo(obj.getId(), obj.getVeiculos().get(index).getId());
+                DAO.removerVeiculo(obj.getId(), v.getId());
             }
             obj.removeVeiculo(index);
             veiculosList.remove(index);
@@ -300,12 +313,13 @@ public class jifManifesto extends javax.swing.JInternalFrame {
 
     private void jbAdicionarVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdicionarVeiculoActionPerformed
         int index = jcbVeiculos.getSelectedIndex();
+        System.out.println(index);
         if (index == -1) { return; }
         try {
-            if (obj.getId() != 0) {
-                DAO.adicionarVeiculo(obj.getId(), obj.getVeiculos().get(index).getId());
-            }
             Veiculo v = veiculos.get(index);
+            if (obj.getId() != 0) {
+                DAO.adicionarVeiculo(obj.getId(), v.getId());
+            }
             veiculosList.addElement(v.getNumeroPlaca());
             jlistVeiculos.setModel(veiculosList);
             obj.addVeiculo(v);
@@ -338,15 +352,20 @@ public class jifManifesto extends javax.swing.JInternalFrame {
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jbSalvarActionPerformed
         try {
             if (validarCampos()) {
-                if (preencherObjeto()) {
-                    DAO.inserir(obj);
-                    if (obj.getId() != 0) {
-                        atualizarCampos();
-                        JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
-                        jbCancelarActionPerformed(evt);
+                if (preencherObjeto()) 
+                    if (obj.getId() > 0) {
+                        DAO.editar(obj);
                     } else {
-                        JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                        DAO.inserir(obj);
+                        if (obj.getId() != 0) {
+                            atualizarCampos();
+                            JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
+                            jbCancelarActionPerformed(evt);
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                        }
                     }
+                    
                 }
             }
         } catch (Exception e) {
@@ -379,6 +398,7 @@ public class jifManifesto extends javax.swing.JInternalFrame {
         jtId.setText("0");
         jtFilialOrigem.setText("");
         jtFilialDestino.setText("");
+        veiculosList.clear();
     }
     
     public void atualizarCampos() {
@@ -389,6 +409,11 @@ public class jifManifesto extends javax.swing.JInternalFrame {
         jcbVeiculos.setEnabled(true);
         jbAdicionarVeiculo.setEnabled(true);
         jbRemoverVeiculo.setEnabled(true);
+        ArrayList<Veiculo> vs = obj.getVeiculos();
+        for (int i = 0; i < vs.size(); i++) {
+            veiculosList.addElement(vs.get(i).getNumeroPlaca());
+        }
+        jlistVeiculos.setModel(veiculosList);
     }
     
     private void estadoInicialCampos() {

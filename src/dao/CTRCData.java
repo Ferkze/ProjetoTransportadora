@@ -98,11 +98,11 @@ public class CTRCData extends DataSource {
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "UPDATE tbl_CTRCManifesto SET IdCtrc = null WHERE IdCtrc = ?";
+        String sql = "DELETE FROM tbl_CTRCManifesto WHERE IdCtrc = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
-        sql = "DELETE FROM tbl_CTRCs WHERE IdCtrc = ?";
+        sql = "DELETE FROM tbl_CTRC WHERE IdCtrc = ?";
         ps = c.prepareStatement(sql);
         ps.setInt(1, id);
         int registros = ps.executeUpdate();
@@ -133,8 +133,8 @@ public class CTRCData extends DataSource {
         String sql = "DELETE FROM tbl_CTRCManifesto WHERE IdManifesto = ? AND IdCtrc = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
-        ps.setInt(1, id);
-        ps.setInt(2, idManifesto);
+        ps.setInt(1, idManifesto);
+        ps.setInt(2, id);
         int registros = ps.executeUpdate();
 
         if (registros > 0) {

@@ -17,7 +17,7 @@ public class MotoristaData extends DataSource {
     }
 
     public boolean inserir(Motorista m) throws Exception {
-        String sql = "INSERT INTO tbl_Motorista (nome, sexo, telefone) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO tbl_Motorista (nome, sexo, telefone) VALUES (?, ?, ?)";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, m.getNome());

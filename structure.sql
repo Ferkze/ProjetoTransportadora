@@ -1,8 +1,8 @@
 /* -- BASE DE DADOS */
 
 	--Criar Banco
-	--CREATE DATABASE db_ProjetoTranspotadora;
-	USE db_ProjetoTranspotadora;
+	--CREATE DATABASE db_ProjetoTransportadora;
+	USE db_ProjetoTransportadora;
 
 	--sp_help tbl_CTRC
 
@@ -23,8 +23,8 @@ CREATE TABLE tbl_Manifesto (
 	
 CREATE TABLE tbl_ManifestoVeiculo (
 	IdManifestoVeiculo INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
-	IdManifesto INT FOREIGN KEY REFERENCES tbl_Manifesto(IdManifesto) NOT NULL,
-	IdVeiculo INT FOREIGN KEY REFERENCES tbl_Veiculo(IdVeiculo) NOT NULL
+	IdManifesto INT FOREIGN KEY REFERENCES tbl_Manifesto(IdManifesto) NULL,
+	IdVeiculo INT FOREIGN KEY REFERENCES tbl_Veiculo(IdVeiculo) NULL
 );
 
 CREATE TABLE tbl_Motorista (
@@ -62,8 +62,8 @@ CREATE TABLE tbl_CTRC (
 
 CREATE TABLE tbl_CTRCManifesto (
 	IdCtrcManifesto INT PRIMARY KEY IDENTITY(1,1)NOT NULL,
-	IdManifesto INT FOREIGN KEY REFERENCES tbl_Manifesto (IdManifesto) NOT NULL,
-	IdCtrc INT FOREIGN KEY REFERENCES tbl_CTRC (IdCtrc) NOT NULL
+	IdManifesto INT FOREIGN KEY REFERENCES tbl_Manifesto (IdManifesto) NULL,
+	IdCtrc INT FOREIGN KEY REFERENCES tbl_CTRC (IdCtrc) NULL
 );
 
 	--Inserir Veiculos

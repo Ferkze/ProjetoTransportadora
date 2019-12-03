@@ -289,10 +289,18 @@ public class jifCTRC extends javax.swing.JInternalFrame {
         try {
             if (validarCampos()) {
                 preencherObjeto();
-                if (DAO.inserir(obj)) {
-                    JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
+                if (obj.getId() > 0) {
+                    if (DAO.editar(obj)) {
+                        JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Erro ao Editar");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                    if (DAO.inserir(obj)) {
+                        JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                    }
                 }
             }
         } catch (Exception e) {
@@ -410,8 +418,9 @@ public class jifCTRC extends javax.swing.JInternalFrame {
         int index = jlistManifestos.getSelectedIndex();
         if (index == -1) return;
         try {
+            Manifesto m = obj.getManifestos().get(index);
             if (obj.getId() != 0) {
-                DAO.removerManifesto(obj.getId(), obj.getManifestos().get(index).getId());
+                DAO.removerManifesto(obj.getId(), m.getId());
             }
             obj.removeManifesto(index);
             manifestoListModel.remove(index);
@@ -490,7 +499,7 @@ public class jifCTRC extends javax.swing.JInternalFrame {
     }
     
     private void limparCampos() {
-        jtId.setText("");
+        jtId.setText("0");
         jtDataEmissao.setText("");
         jtPesoFrete.setText("");
         jtValorFrete.setText("");
@@ -500,6 +509,7 @@ public class jifCTRC extends javax.swing.JInternalFrame {
     }
 
     private void preencherObjeto() {
+        obj.setId(Integer.parseInt(jtId.getText()));
         Cliente cd = obj.getDestinatario();
         cd.setId((int) jcbDest.getSelectedItem());
         obj.setcDest(cd);
