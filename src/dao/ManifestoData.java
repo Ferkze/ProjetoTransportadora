@@ -25,9 +25,9 @@ public class ManifestoData extends DataSource {
             ResultSet keys = ps.getGeneratedKeys();
             keys.next();
             obj.setId(keys.getInt(1));
-            
+
             ArrayList<Veiculo> av = obj.getVeiculos();
-            for(int i = 0; i < av.size(); i++) {
+            for (int i = 0; i < av.size(); i++) {
                 adicionarVeiculo(obj.getId(), av.get(i).getId());
             }
         }
@@ -64,10 +64,10 @@ public class ManifestoData extends DataSource {
             m.setFilialOrigem(resultados.getString(2));
             m.setFilialDestino(resultados.getString(3));
         }
-        
 
         return m;
     }
+
     public ArrayList<Manifesto> buscarTudo() throws Exception {
         String sql = "SELECT TOP 100 IdManifesto, nmFilial_Origem, nmFilial_Destino FROM tbl_Manifesto";
         Connection c = getConnection();
@@ -82,12 +82,18 @@ public class ManifestoData extends DataSource {
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "UPDATE tbl_CTRCManifesto SET IdManifesto = null  WHERE IdManifesto = ?";
+        String sql = "DELETE tbl_CTRCManifesto WHERE IdManifesto = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
         ps.executeUpdate();
-        sql = "DELETE FROM tbl_Manifestos WHERE IdManifesto = ?";
+
+        sql = "DELETE tbl_ManifestoVeiculo WHERE IdManifesto = ?";
+        ps = c.prepareStatement(sql);
+        ps.setInt(1, id);
+        ps.executeUpdate();
+
+        sql = "DELETE FROM tbl_Manifesto WHERE IdManifesto = ?";
         ps = c.prepareStatement(sql);
         ps.setInt(1, id);
         int registros = ps.executeUpdate();
@@ -98,9 +104,8 @@ public class ManifestoData extends DataSource {
             return false;
         }
     }
-    
-    //VEICULOS DO MANIFESTO
-    
+
+    // VEICULOS DO MANIFESTO
 
     public boolean adicionarVeiculo(int id, int idVeiculo) throws Exception {
         String sql = "INSERT INTO tbl_ManifestoVeiculo (IdManifesto, IdVeiculo) VALUES (?, ?)";

@@ -74,12 +74,12 @@ public class VeiculoData extends DataSource {
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "UPDATE tbl_Manifesto SET IdVeiculo = null  WHERE IdVeiculo = ?";
+        String sql = "DELETE FROM tbl_ManifestoVeiculo WHERE IdVeiculo = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
-        ps.executeUpdate();
-        sql = "DELETE FROM tbl_Veiculos WHERE IdVeiculo = ?";
+        ps.execute();
+        sql = "DELETE FROM tbl_Veiculo WHERE IdVeiculo = ?";
         c = getConnection();
         ps = c.prepareStatement(sql);
         ps.setInt(1, id);

@@ -54,14 +54,13 @@ public class CTRCData extends DataSource {
     }
 
     public CTRC buscar(int id) throws Exception {
-        String sql = "SELECT IdCtrc, dtEmissao, qtPesoFrete, vlFrete, \n"+
-            "cd.IdCliente,cd.nome,cd.endereco,cd.cidade,cd.uf,cd.telefone,cd.cnpj,cd.tipo_organizacao,cd.cpf,cd.sexo,\n"+
-            "cr.IdCliente,cr.nome,cr.endereco,cr.cidade,cr.uf,cr.telefone,cr.cnpj,cr.tipo_organizacao,cr.cpf,cr.sexo, \n"+
-            "m.IdMotorista,m.nome,m.sexo,m.telefone FROM tbl_CTRC c \n" +
-            "JOIN tbl_Cliente cd ON cd.IdCliente = c.IdClienteDest \n" +
-            "JOIN tbl_Cliente cr ON cr.IdCliente = c.IdClienteReme \n" +
-            "JOIN tbl_Motorista m ON m.IdMotorista = c.IdMotorista \n" +
-            "WHERE IdCtrc = ?";
+        String sql = "SELECT IdCtrc, dtEmissao, qtPesoFrete, vlFrete, \n"
+                + "cd.IdCliente,cd.nome,cd.endereco,cd.cidade,cd.uf,cd.telefone,cd.cnpj,cd.tipo_organizacao,cd.cpf,cd.sexo,\n"
+                + "cr.IdCliente,cr.nome,cr.endereco,cr.cidade,cr.uf,cr.telefone,cr.cnpj,cr.tipo_organizacao,cr.cpf,cr.sexo, \n"
+                + "m.IdMotorista,m.nome,m.sexo,m.telefone FROM tbl_CTRC c \n"
+                + "LEFT JOIN tbl_Cliente cd ON cd.IdCliente = c.IdClienteDest \n"
+                + "LEFT JOIN tbl_Cliente cr ON cr.IdCliente = c.IdClienteReme \n"
+                + "LEFT JOIN tbl_Motorista m ON m.IdMotorista = c.IdMotorista \n" + "WHERE IdCtrc = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -72,8 +71,11 @@ public class CTRCData extends DataSource {
             ctrc.setDataEmissao(r.getString(2));
             ctrc.setPeso(r.getInt(3));
             ctrc.setValor(r.getFloat(4));
-            ctrc.setcDest(new Cliente(r.getInt(5), r.getString(6), r.getString(7), r.getString(8), r.getString(9), r.getString(10), r.getString(11), r.getString(12), r.getString(13), r.getString(14)));
-            ctrc.setRemetente(new Cliente(r.getInt(15), r.getString(16), r.getString(17), r.getString(18), r.getString(19), r.getString(20), r.getString(21), r.getString(22), r.getString(23), r.getString(24)));
+            ctrc.setcDest(new Cliente(r.getInt(5), r.getString(6), r.getString(7), r.getString(8), r.getString(9),
+                    r.getString(10), r.getString(11), r.getString(12), r.getString(13), r.getString(14)));
+            ctrc.setRemetente(
+                    new Cliente(r.getInt(15), r.getString(16), r.getString(17), r.getString(18), r.getString(19),
+                            r.getString(20), r.getString(21), r.getString(22), r.getString(23), r.getString(24)));
             ctrc.setMotorista(new Motorista(r.getInt(25), r.getString(26), r.getString(27), r.getString(28)));
         }
 
@@ -102,6 +104,7 @@ public class CTRCData extends DataSource {
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
+        ps.execute();
         sql = "DELETE FROM tbl_CTRC WHERE IdCtrc = ?";
         ps = c.prepareStatement(sql);
         ps.setInt(1, id);
@@ -113,8 +116,8 @@ public class CTRCData extends DataSource {
             return false;
         }
     }
-    
-    // MANIFESTOS 
+
+    // MANIFESTOS
     public boolean adicionarManifesto(int id, int idManifesto) throws Exception {
         String sql = "INSERT INTO tbl_CTRCManifesto(IdCtrc, IdManifesto) VALUES (?, ?)";
         Connection c = getConnection();
@@ -129,6 +132,7 @@ public class CTRCData extends DataSource {
             return false;
         }
     }
+
     public boolean removerManifesto(int id, int idManifesto) throws Exception {
         String sql = "DELETE FROM tbl_CTRCManifesto WHERE IdManifesto = ? AND IdCtrc = ?";
         Connection c = getConnection();
@@ -157,5 +161,5 @@ public class CTRCData extends DataSource {
         }
         return manifestos;
     }
-    
+
 }

@@ -1,7 +1,7 @@
 /* -- BASE DE DADOS */
 
 	--Criar Banco
-	--CREATE DATABASE db_ProjetoTransportadora;
+	-- CREATE DATABASE db_ProjetoTransportadora;
 	USE db_ProjetoTransportadora;
 
 	--sp_help tbl_CTRC
@@ -51,9 +51,9 @@ CREATE TABLE tbl_Cliente (
 
 CREATE TABLE tbl_CTRC (
 	IdCtrc INT PRIMARY KEY IDENTITY(1,1),
-	IdClienteReme INT FOREIGN KEY REFERENCES tbl_Cliente (IdCliente) NOT NULL,
-	IdClienteDest INT FOREIGN KEY REFERENCES tbl_Cliente (IdCliente) NOT NULL,
-	IdMotorista INT FOREIGN KEY REFERENCES tbl_Motorista (IdMotorista) NOT NULL,
+	IdClienteReme INT FOREIGN KEY REFERENCES tbl_Cliente (IdCliente) NULL,
+	IdClienteDest INT FOREIGN KEY REFERENCES tbl_Cliente (IdCliente) NULL,
+	IdMotorista INT FOREIGN KEY REFERENCES tbl_Motorista (IdMotorista) NULL,
 	dtEmissao DATE NOT NULL,
 	qtPesoFrete INT NOT NULL,
 	vlFrete MONEY 

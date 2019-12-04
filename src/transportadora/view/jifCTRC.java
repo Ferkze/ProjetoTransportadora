@@ -56,7 +56,6 @@ public class jifCTRC extends javax.swing.JInternalFrame {
         jlCliReme = new javax.swing.JLabel();
         jbNovo = new javax.swing.JButton();
         jbExcluir = new javax.swing.JButton();
-        jbEditar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jbSalvar = new javax.swing.JButton();
         jlCliDest = new javax.swing.JLabel();
@@ -100,13 +99,6 @@ public class jifCTRC extends javax.swing.JInternalFrame {
         jbExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbExcluirActionPerformed(evt);
-            }
-        });
-
-        jbEditar.setText("Editar");
-        jbEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbEditarActionPerformed(evt);
             }
         });
 
@@ -167,15 +159,39 @@ public class jifCTRC extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jcbMoto, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlCliReme)
+                            .addComponent(jlId))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jcbReme, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(68, 68, 68)
+                        .addComponent(jcbMoto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                            .addComponent(jcbManifestos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jbAdicionarManifesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbRemoverManifesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jlDataEmissao)
                                     .addComponent(jlCliDest)
@@ -193,49 +209,26 @@ public class jifCTRC extends javax.swing.JInternalFrame {
                                         .addComponent(jlPesoFrete)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jtPesoFrete, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlCliReme)
-                                    .addComponent(jlId))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jcbReme, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(40, 40, 40)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jcbManifestos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jbEditar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jbExcluir)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jbSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jbNovo)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jbBuscar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jbCancelar)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jbAdicionarManifesto)
-                                    .addComponent(jbRemoverManifesto))))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                                .addGap(78, 78, 78)
+                                .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlId, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbBuscar)
+                    .addComponent(jbNovo))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCliReme)
@@ -267,19 +260,16 @@ public class jifCTRC extends javax.swing.JInternalFrame {
                     .addComponent(jbAdicionarManifesto))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbRemoverManifesto)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbNovo)
-                    .addComponent(jbCancelar)
-                    .addComponent(jbBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbEditar)
-                    .addComponent(jbExcluir)
-                    .addComponent(jbSalvar))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jbSalvar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jbExcluir)
+                                .addComponent(jbCancelar))))
+                    .addComponent(jbRemoverManifesto))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -310,7 +300,13 @@ public class jifCTRC extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         try {
-            obj = DAO.buscar(Integer.parseInt(jtId.getText()));
+            String id = jtId.getText();
+            if (id.isEmpty()) {
+                jtId.requestFocus();
+                JOptionPane.showMessageDialog(this, "Digite um código");
+                return;
+            }
+            obj = DAO.buscar(Integer.parseInt(id));
             if (obj.getId() == 0) {
                 JOptionPane.showMessageDialog(this, "Não encontrado");
                 return;
@@ -331,7 +327,6 @@ public class jifCTRC extends javax.swing.JInternalFrame {
             jbBuscar.setEnabled(false);
             jbNovo.setEnabled(false);
             jbCancelar.setEnabled(true);
-            jbEditar.setEnabled(true);
             jbExcluir.setEnabled(true);
             jbSalvar.setEnabled(true);
             jbAdicionarManifesto.setEnabled(true);
@@ -344,8 +339,8 @@ public class jifCTRC extends javax.swing.JInternalFrame {
     private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
         try {
             if (DAO.deletar(Integer.parseInt(jtId.getText()))) {
-                JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
-                limparCampos();
+                JOptionPane.showMessageDialog(this, "Excluído com Sucesso!");
+                estadoInicialCampos();
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao Excluir");
             }
@@ -353,21 +348,6 @@ public class jifCTRC extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Erro ao Excluir: " + e.getMessage(), "Excluir", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jbExcluirActionPerformed
-
-    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
-        try {
-            if (validarCampos()) {
-                preencherObjeto();
-                if (DAO.editar(obj)) {
-                    JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Erro ao Editar");
-                }
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao Editar: " + e.getMessage(), "Editar", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_jbEditarActionPerformed
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         estadoInicialCampos();
@@ -391,7 +371,6 @@ public class jifCTRC extends javax.swing.JInternalFrame {
         jbBuscar.setEnabled(false);
         jbNovo.setEnabled(false);
         jbCancelar.setEnabled(true);
-        jbEditar.setEnabled(false);
         jbExcluir.setEnabled(false);
         jbSalvar.setEnabled(true);
         jbAdicionarManifesto.setEnabled(true);
@@ -405,6 +384,9 @@ public class jifCTRC extends javax.swing.JInternalFrame {
             Manifesto m = manifestos.get(index);
             if (obj.getId() != 0) {
                 DAO.adicionarManifesto(obj.getId(), m.getId());
+            } else {
+                JOptionPane.showMessageDialog(this, "Salve o CTRC para poder adicionar ou remover Manifestos");
+                return;
             }
             obj.addManifesto(m);
             manifestoListModel.addElement(m.getId()+": "+m.getFilialDestino()+" - "+m.getFilialOrigem());
@@ -421,6 +403,9 @@ public class jifCTRC extends javax.swing.JInternalFrame {
             Manifesto m = obj.getManifestos().get(index);
             if (obj.getId() != 0) {
                 DAO.removerManifesto(obj.getId(), m.getId());
+            } else {
+                JOptionPane.showMessageDialog(this, "Salve o CTRC para poder adicionar ou remover Manifestos");
+                return;
             }
             obj.removeManifesto(index);
             manifestoListModel.remove(index);
@@ -438,7 +423,6 @@ public class jifCTRC extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbAdicionarManifesto;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbCancelar;
-    private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbExcluir;
     private javax.swing.JButton jbNovo;
     private javax.swing.JButton jbRemoverManifesto;
@@ -491,7 +475,6 @@ public class jifCTRC extends javax.swing.JInternalFrame {
         jbBuscar.setEnabled(true);
         jbNovo.setEnabled(true);
         jbCancelar.setEnabled(false);
-        jbEditar.setEnabled(false);
         jbExcluir.setEnabled(false);
         jbSalvar.setEnabled(false);
         jbAdicionarManifesto.setEnabled(false);
@@ -548,9 +531,9 @@ public class jifCTRC extends javax.swing.JInternalFrame {
             ClienteData cd = new ClienteData(DAO.getConnection());
             ArrayList<Cliente> clientes = cd.buscarTudo();
             for (int i = 0; i < clientes.size(); i++) {
-                clientesDestModel.addElement(clientes.get(i).getId());
-                clientesRemeModel.addElement(clientes.get(i).getId());
-                System.out.println(clientes.get(i).getId());
+                Cliente c = clientes.get(i);
+                clientesDestModel.addElement(c.getId()+": "+c.getNome());
+                clientesRemeModel.addElement(c.getId()+": "+c.getNome());
             }
         } catch(Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao buscar clientes: "+e.toString(), "Erro", JOptionPane.ERROR_MESSAGE);
@@ -561,7 +544,7 @@ public class jifCTRC extends javax.swing.JInternalFrame {
             MotoristaData md = new MotoristaData(DAO.getConnection());
             ArrayList<Motorista> motoristas = md.buscarTudo();
             for (int i = 0; i < motoristas.size(); i++) {
-                motoristasModel.addElement(motoristas.get(i).getId());
+                motoristasModel.addElement(motoristas.get(i).getId()+": "+motoristas.get(i).getNome());
             }
         } catch(Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao buscar motoristas: "+e.toString(), "Erro", JOptionPane.ERROR_MESSAGE);

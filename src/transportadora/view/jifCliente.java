@@ -36,6 +36,7 @@ public class jifCliente extends javax.swing.JInternalFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -44,7 +45,6 @@ public class jifCliente extends javax.swing.JInternalFrame {
         jtNomeCliente = new javax.swing.JTextField();
         jbNovo = new javax.swing.JButton();
         jbExcluir = new javax.swing.JButton();
-        jbEditar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jbSalvar = new javax.swing.JButton();
         jlEndereco = new javax.swing.JLabel();
@@ -82,13 +82,6 @@ public class jifCliente extends javax.swing.JInternalFrame {
         jbExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbExcluirActionPerformed(evt);
-            }
-        });
-
-        jbEditar.setText("Editar");
-        jbEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbEditarActionPerformed(evt);
             }
         });
 
@@ -130,59 +123,58 @@ public class jifCliente extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlNomeCliente)
+                    .addComponent(jlEndereco)
+                    .addComponent(jlCidade)
+                    .addComponent(jlTelefone)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jlCPF)
+                        .addComponent(jlCNPJ))
+                    .addComponent(jlId, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtNomeCliente)
+                    .addComponent(jtEndereco, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlNomeCliente)
-                            .addComponent(jlEndereco)
-                            .addComponent(jlCidade)
-                            .addComponent(jlTelefone)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jlCPF)
-                                .addComponent(jlCNPJ))
-                            .addComponent(jlId, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jbCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtCPF, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtCNPJ, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtCidade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jtCPF, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                                .addComponent(jtCNPJ, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jtCidade)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jlUF)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jtUF, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbEditar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbExcluir)
-                                .addGap(18, 18, 18)
-                                .addComponent(jbSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbNovo)
-                                .addGap(15, 15, 15)
-                                .addComponent(jbBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbCancelar)))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                                .addComponent(jlUF)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtUF))
+                            .addComponent(jbSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlId, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbBuscar)
+                    .addComponent(jbNovo))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNomeCliente)
                     .addComponent(jtNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -208,17 +200,12 @@ public class jifCliente extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlCPF))
-                .addGap(39, 39, 39)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbNovo)
-                    .addComponent(jbCancelar)
-                    .addComponent(jbBuscar))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbEditar)
                     .addComponent(jbExcluir)
+                    .addComponent(jbCancelar)
                     .addComponent(jbSalvar))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(32, 32, 32))
         );
 
         pack();
@@ -226,7 +213,16 @@ public class jifCliente extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jbBuscarActionPerformed
         try {
+            if (jtId.getText().equals("")) {
+                jtId.requestFocus();
+                JOptionPane.showMessageDialog(this, "Digite um código");
+                return;
+            }
             obj = DAO.buscar(Integer.parseInt(jtId.getText()));
+            if (obj.getId() == 0) {
+                JOptionPane.showMessageDialog(this, "Não encontrado");
+                return;
+            }
             atualizarCampos();
 
             jtId.setEnabled(false);
@@ -241,7 +237,6 @@ public class jifCliente extends javax.swing.JInternalFrame {
             jbBuscar.setEnabled(false);
             jbNovo.setEnabled(false);
             jbCancelar.setEnabled(true);
-            jbEditar.setEnabled(true);
             jbExcluir.setEnabled(true);
             jbSalvar.setEnabled(true);
         } catch (Exception e) {
@@ -266,7 +261,6 @@ public class jifCliente extends javax.swing.JInternalFrame {
         jbCancelar.setEnabled(true);
         jbSalvar.setEnabled(true);
         jbBuscar.setEnabled(false);
-        jbEditar.setEnabled(false);
         jbExcluir.setEnabled(false);
         jbNovo.setEnabled(false);
     }// GEN-LAST:event_jbNovoActionPerformed
@@ -275,27 +269,11 @@ public class jifCliente extends javax.swing.JInternalFrame {
         estadoInicialCampos();
     }// GEN-LAST:event_jbCancelarActionPerformed
 
-    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jbEditarActionPerformed
-        try {
-            if (validarCampos()) {
-                preencherObjeto();
-                if (DAO.editar(obj)) {
-                    JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Erro ao Editar");
-                }
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao Editar: " + e.getMessage(), "Editar",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }// GEN-LAST:event_jbEditarActionPerformed
-
     private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jbExcluirActionPerformed
         try {
             if (DAO.deletar(Integer.parseInt(jtId.getText()))) {
                 JOptionPane.showMessageDialog(this, "Excluído com Sucesso!");
-                limparCampos();
+                estadoInicialCampos();
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao Excluir");
             }
@@ -309,10 +287,18 @@ public class jifCliente extends javax.swing.JInternalFrame {
         try {
             if (validarCampos()) {
                 preencherObjeto();
-                if (DAO.inserir(obj)) {
-                    JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
+                if (obj.getId() > 0) {
+                    if (DAO.editar(obj)) {
+                        JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Erro ao Editar");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                    if (DAO.inserir(obj)) {
+                        JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                    }
                 }
             }
         } catch (Exception e) {
@@ -324,7 +310,6 @@ public class jifCliente extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbCancelar;
-    private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbExcluir;
     private javax.swing.JButton jbNovo;
     private javax.swing.JButton jbSalvar;
@@ -361,7 +346,6 @@ public class jifCliente extends javax.swing.JInternalFrame {
         jbBuscar.setEnabled(true);
         jbNovo.setEnabled(true);
         jbCancelar.setEnabled(false);
-        jbEditar.setEnabled(false);
         jbExcluir.setEnabled(false);
         jbSalvar.setEnabled(false);
     }

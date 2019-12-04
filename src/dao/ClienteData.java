@@ -11,7 +11,7 @@ import model.Cliente;
 public class ClienteData extends DataSource {
     public ClienteData() throws Exception {
     }
-    
+
     public ClienteData(Connection c) throws Exception {
         super(c);
     }
@@ -94,11 +94,17 @@ public class ClienteData extends DataSource {
     }
 
     public boolean deletar(int id) throws Exception {
-        String sql = "UPDATE tbl_ClienteCTRC SET IdCliente = null WHERE IdCliente = ?";
+        String sql = "UPDATE tbl_CTRC SET IdClienteDest = null WHERE IdClienteDest = ?";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setInt(1, id);
         ps.executeUpdate();
+
+        sql = "UPDATE tbl_CTRC SET IdClienteReme = null WHERE IdClienteReme = ?";
+        ps = c.prepareStatement(sql);
+        ps.setInt(1, id);
+        ps.executeUpdate();
+
         sql = "DELETE FROM tbl_Cliente WHERE IdCliente = ?";
         PreparedStatement ps2 = c.prepareStatement(sql);
         ps2.setInt(1, id);
