@@ -11,13 +11,19 @@
 
 
 	--Criar Tabelas
-CREATE TABLE tbl_Veiculos (
-IdVeiculo INT PRIMARY KEY IDENTITY(1,1),
-dsVeiculo VARCHAR(50) NOT NULL, -- Obrigat�rio
-nrPlaca_Veiculo VARCHAR(10) NOT NULL
+CREATE TABLE tbl_Usuarios (
+IdUsuario INT PRIMARY KEY IDENTITY(1,1),
+apelido VARCHAR(30) NOT NULL,
+senha VARCHAR(10) NOT NULL
 
 );
-	
+
+CREATE TABLE tbl_Veiculos (
+IdVeiculo INT PRIMARY KEY IDENTITY(1,1),
+dsVeiculo VARCHAR(50) NOT NULL,
+nrPlaca_Veiculo VARCHAR(10) NOT NULL
+
+);	
 
 CREATE TABLE tbl_Manifestos (
 IdManifesto INT PRIMARY KEY IDENTITY(1,1)NOT NULL,
@@ -94,11 +100,15 @@ IdCtrc INT FOREIGN KEY REFERENCES tbl_CTRCs (IdCtrc) NOT NULL
 
 );
 
+	--Inserir Usuarios
 
+	-- DELETE tbl_Usuarios WHERE IdUsuario>'0'
+	-- SELECT * FROM tbl_Usuarios
 
-
-	
-
+	INSERT INTO tbl_Usuarios (apelido, senha) VALUES ('cadu', 'fatec123')
+	INSERT INTO tbl_Usuarios (apelido, senha) VALUES ('luiz', 'fatec123')
+	INSERT INTO tbl_Usuarios (apelido, senha) VALUES ('carlos', 'fatec123')
+	INSERT INTO tbl_Usuarios (apelido, senha) VALUES ('sueli', 'FATECSBC')
 
 	--Inserir Veiculos
 
