@@ -45,11 +45,8 @@ public class jifMotorista extends javax.swing.JInternalFrame {
         jtNome = new javax.swing.JTextField();
         jbNovo = new javax.swing.JButton();
         jbExcluir = new javax.swing.JButton();
-        jbEditar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jbSalvar = new javax.swing.JButton();
-        jtDataNasc = new javax.swing.JTextField();
-        jlDatNasc = new javax.swing.JLabel();
         jlTelefone = new javax.swing.JLabel();
         jtTelefone = new javax.swing.JTextField();
         jrbMasculino = new javax.swing.JRadioButton();
@@ -81,13 +78,6 @@ public class jifMotorista extends javax.swing.JInternalFrame {
             }
         });
 
-        jbEditar.setText("Editar");
-        jbEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbEditarActionPerformed(evt);
-            }
-        });
-
         jbCancelar.setText("Cancelar");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,8 +91,6 @@ public class jifMotorista extends javax.swing.JInternalFrame {
                 jbSalvarActionPerformed(evt);
             }
         });
-
-        jlDatNasc.setText("Data de Nascimento ");
 
         jlTelefone.setText("Telefone");
 
@@ -126,63 +114,58 @@ public class jifMotorista extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
+                        .addComponent(jlTelefone)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbCancelar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 21, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jlSexo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jrbFeminino)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jrbMasculino)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jlTelefone)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jlDatNasc)
+                                .addGap(37, 37, 37)
+                                .addComponent(jrbFeminino, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jrbMasculino))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jlNome)
                                     .addComponent(jlId))
                                 .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbEditar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbExcluir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbSalvar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbNovo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbCancelar)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jbNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jtNome))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlId, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbBuscar)
+                    .addComponent(jbNovo))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlNome)
                     .addComponent(jtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlDatNasc)
-                    .addComponent(jtDataNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlSexo)
@@ -194,15 +177,10 @@ public class jifMotorista extends javax.swing.JInternalFrame {
                     .addComponent(jtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbNovo)
-                    .addComponent(jbCancelar)
-                    .addComponent(jbBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbEditar)
                     .addComponent(jbExcluir)
-                    .addComponent(jbSalvar))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(jbCancelar)
+                    .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
@@ -215,7 +193,6 @@ public class jifMotorista extends javax.swing.JInternalFrame {
 
         jtId.setEnabled(false);
         jtNome.setEnabled(true);
-        jtDataNasc.setEnabled(true);
         jtTelefone.setEnabled(true);
         jrbMasculino.setEnabled(true);
         jrbFeminino.setEnabled(true);
@@ -223,19 +200,26 @@ public class jifMotorista extends javax.swing.JInternalFrame {
         jbBuscar.setEnabled(false);
         jbNovo.setEnabled(false);
         jbCancelar.setEnabled(true);
-        jbEditar.setEnabled(false);
         jbExcluir.setEnabled(false);
         jbSalvar.setEnabled(true);
     }//GEN-LAST:event_jbNovoActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         try {
+            if (jtId.getText().equals("")) {
+                jtId.requestFocus();
+                JOptionPane.showMessageDialog(this, "Digite um código");
+                return;
+            }
             obj = DAO.buscar(Integer.parseInt(jtId.getText()));
+            if (obj.getId() == 0) {
+                JOptionPane.showMessageDialog(this, "Não encontrado");
+                return;
+            }
             atualizarCampos();
             
             jtId.setEnabled(false);
             jtNome.setEnabled(true);
-            jtDataNasc.setEnabled(true);
             jtTelefone.setEnabled(true);
             jrbMasculino.setEnabled(true);
             jrbFeminino.setEnabled(true);
@@ -243,7 +227,6 @@ public class jifMotorista extends javax.swing.JInternalFrame {
             jbBuscar.setEnabled(false);
             jbNovo.setEnabled(false);
             jbCancelar.setEnabled(true);
-            jbEditar.setEnabled(true);
             jbExcluir.setEnabled(true);
             jbSalvar.setEnabled(true);
         } catch (Exception e) {
@@ -255,26 +238,11 @@ public class jifMotorista extends javax.swing.JInternalFrame {
         estadoInicialCampos();
     }//GEN-LAST:event_jbCancelarActionPerformed
 
-    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
-        try {
-            if (validarCampos()) {
-                preencherObjeto();
-                if (DAO.editar(obj)) {
-                    JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Erro ao Editar");
-                }
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao Editar: " + e.getMessage(), "Editar", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_jbEditarActionPerformed
-
     private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
         try {
             if (DAO.deletar(Integer.parseInt(jtId.getText()))) {
                 JOptionPane.showMessageDialog(this, "Excluído com Sucesso!");
-                limparCampos();
+                estadoInicialCampos();
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao Excluir");
             }
@@ -287,10 +255,18 @@ public class jifMotorista extends javax.swing.JInternalFrame {
         try {
             if (validarCampos()) {
                 preencherObjeto();
-                if (DAO.inserir(obj)) {
-                    JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
+                if (obj.getId() > 0) {
+                    if (DAO.editar(obj)) {
+                        JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Erro ao Editar");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                    if (DAO.inserir(obj)) {
+                        JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                    }
                 }
             }
         } catch (Exception e) {
@@ -304,18 +280,15 @@ public class jifMotorista extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbCancelar;
-    private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbExcluir;
     private javax.swing.JButton jbNovo;
     private javax.swing.JButton jbSalvar;
-    private javax.swing.JLabel jlDatNasc;
     private javax.swing.JLabel jlId;
     private javax.swing.JLabel jlNome;
     private javax.swing.JLabel jlSexo;
     private javax.swing.JLabel jlTelefone;
     private javax.swing.JRadioButton jrbFeminino;
     private javax.swing.JRadioButton jrbMasculino;
-    private javax.swing.JTextField jtDataNasc;
     private javax.swing.JTextField jtId;
     private javax.swing.JTextField jtNome;
     private javax.swing.JTextField jtTelefone;
@@ -326,7 +299,6 @@ public class jifMotorista extends javax.swing.JInternalFrame {
         
         buttonGroup1.setSelected(jrbMasculino.getModel(), true);
         
-        jtDataNasc.setEnabled(false);
         jtId.setEnabled(true);
         jtNome.setEnabled(false);
         jtTelefone.setEnabled(false);
@@ -336,13 +308,11 @@ public class jifMotorista extends javax.swing.JInternalFrame {
         jbBuscar.setEnabled(true);
         jbNovo.setEnabled(true);
         jbCancelar.setEnabled(false);
-        jbEditar.setEnabled(false);
         jbExcluir.setEnabled(false);
         jbSalvar.setEnabled(false);
     }
 
     private void limparCampos() {
-        jtDataNasc.setText("");
         jtId.setText("");
         jtNome.setText("");
         jtTelefone.setText("");
@@ -351,7 +321,6 @@ public class jifMotorista extends javax.swing.JInternalFrame {
     }
 
     private void preencherObjeto() {
-        obj.setNascimento(jtDataNasc.getText());
         obj.setId(Integer.parseInt(jtId.getText()));
         obj.setNome(jtNome.getText());
         obj.setTelefone(jtTelefone.getText());
@@ -363,7 +332,6 @@ public class jifMotorista extends javax.swing.JInternalFrame {
     }
 
     private void atualizarCampos() {
-        jtDataNasc.setText(obj.getNascimento());
         jtId.setText(obj.getId()+"");
         jtNome.setText(obj.getNome());
         jtTelefone.setText(obj.getTelefone());
@@ -375,11 +343,6 @@ public class jifMotorista extends javax.swing.JInternalFrame {
     }
 
     private boolean validarCampos() {
-        if (jtDataNasc.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Campo não pode ser vazio");
-            jtDataNasc.requestFocus();
-            return false;
-        }
         if (jtId.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Campo não pode ser vazio");
             jtId.requestFocus();

@@ -1,25 +1,39 @@
 package model;
 
+import java.util.ArrayList;
+
 public class CTRC {
 
     private int id;
-    private String nomeReme;
-    private String nomeDest;
+    private Cliente cReme;
+    private Cliente cDest;
+    private Motorista motorista;
     private String dataEmissao;
+    private ArrayList<Manifesto> manifestos;
     private int peso;
     private float valor;
 
     public CTRC() {
-
+        this.manifestos = new ArrayList<Manifesto>();
     }
 
-    public CTRC(int id, String nomeReme, String nomeDest, String dataEmissao, int peso, float valor) {
+    public CTRC(int id, Cliente reme, Cliente dest, Motorista m, String dataEmissao, int peso, float valor) {
         this.id = id;
-        this.nomeReme = nomeReme;
-        this.nomeDest = nomeDest;
+        this.cReme = reme;
+        this.cDest = dest;
+        this.motorista = m;
         this.dataEmissao = dataEmissao;
         this.peso = peso;
         this.valor = valor;
+        this.manifestos = new ArrayList<Manifesto>();
+    }
+
+    public CTRC(int id, String dataEmissao, int peso, float valor) {
+        this.id = id;
+        this.dataEmissao = dataEmissao;
+        this.peso = peso;
+        this.valor = valor;
+        this.manifestos = new ArrayList<Manifesto>();
     }
 
     public int getId() {
@@ -50,24 +64,47 @@ public class CTRC {
         this.dataEmissao = dataEmissao;
     }
 
-    public String getNomeDest() {
-        return nomeDest;
+    public Cliente getRemetente() {
+        return cReme;
     }
 
-    public void setNomeDest(String nomeDest) {
-        this.nomeDest = nomeDest;
+    public void setRemetente(Cliente cReme) {
+        this.cReme = cReme;
     }
 
-    public String getNomeReme() {
-        return nomeReme;
+    public Cliente getDestinatario() {
+        return cDest;
     }
 
-    public void setNomeReme(String nomeReme) {
-        this.nomeReme = nomeReme;
+    public void setcDest(Cliente cDest) {
+        this.cDest = cDest;
+    }
+
+    public Motorista getMotorista() {
+        return motorista;
+    }
+
+    public void setMotorista(Motorista motorista) {
+        this.motorista = motorista;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
+    public ArrayList<Manifesto> getManifestos() {
+        return manifestos;
+    }
+
+    public void setManifestos(ArrayList<Manifesto> ms) {
+        manifestos = ms;
+    }
+
+    public void addManifesto(Manifesto m) {
+        manifestos.add(m);
+    }
+
+    public void removeManifesto(int i) {
+        manifestos.remove(i);
+    }
 }

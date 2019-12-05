@@ -44,7 +44,6 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
         jtDescricao = new javax.swing.JTextField();
         jbNovo = new javax.swing.JButton();
         jbExcluir = new javax.swing.JButton();
-        jbEditar = new javax.swing.JButton();
         jbCancelar = new javax.swing.JButton();
         jbSalvar = new javax.swing.JButton();
         jlPlaca = new javax.swing.JLabel();
@@ -57,7 +56,7 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setTitle("Veículos");
 
-        jlId.setText("Id");
+        jlId.setText("Código");
 
         jlDescricao.setText("Descrição");
 
@@ -72,13 +71,6 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
         jbExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbExcluirActionPerformed(evt);
-            }
-        });
-
-        jbEditar.setText("Editar");
-        jbEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbEditarActionPerformed(evt);
             }
         });
 
@@ -110,42 +102,39 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlDescricao)
+                    .addComponent(jlPlaca)
+                    .addComponent(jlId))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlDescricao)
-                            .addComponent(jlPlaca)
-                            .addComponent(jlId))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbNovo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbCancelar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jbEditar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbExcluir)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbSalvar)))))
+                        .addComponent(jbExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbCancelar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jbNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jtDescricao)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlId, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbBuscar)
+                    .addComponent(jbNovo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlDescricao)
@@ -154,17 +143,12 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlPlaca)
                     .addComponent(jtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbNovo)
-                    .addComponent(jbCancelar)
-                    .addComponent(jbBuscar))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbEditar)
                     .addComponent(jbExcluir)
+                    .addComponent(jbCancelar)
                     .addComponent(jbSalvar))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -172,19 +156,17 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         try {
+            if (jtId.getText().equals("")) {
+                jtId.requestFocus();
+                JOptionPane.showMessageDialog(this, "Digite um código");
+                return;
+            }
             obj = DAO.buscar(Integer.parseInt(jtId.getText()));
+            if (obj.getId() == 0) {
+                JOptionPane.showMessageDialog(this, "Não encontrado");
+                return;
+            }
             atualizarCampos();
-            
-            jtId.setEnabled(false);
-            jtPlaca.setEnabled(true);
-            jtDescricao.setEnabled(true);
-
-            jbBuscar.setEnabled(false);
-            jbNovo.setEnabled(false);
-            jbCancelar.setEnabled(true);
-            jbEditar.setEnabled(true);
-            jbExcluir.setEnabled(true);
-            jbSalvar.setEnabled(true);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao Buscar: " + e.getMessage(), "Buscar", JOptionPane.ERROR_MESSAGE);
         }
@@ -202,7 +184,6 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
         jbBuscar.setEnabled(false);
         jbNovo.setEnabled(false);
         jbCancelar.setEnabled(true);
-        jbEditar.setEnabled(false);
         jbExcluir.setEnabled(false);
         jbSalvar.setEnabled(true);
     }//GEN-LAST:event_jbNovoActionPerformed
@@ -210,21 +191,6 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
         estadoInicialCampos();
     }//GEN-LAST:event_jbCancelarActionPerformed
-
-    private void jbEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEditarActionPerformed
-        try {
-            if (validarCampos()) {
-                preencherObjeto();
-                if (DAO.editar(obj)) {
-                    JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Erro ao Editar");
-                }
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao Editar: " + e.getMessage(), "Editar", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_jbEditarActionPerformed
 
     private void jbExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExcluirActionPerformed
         try {
@@ -243,11 +209,22 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
         try {
             if (validarCampos()) {
                 preencherObjeto();
-                if (DAO.inserir(obj)) {
-                    JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
+                if (obj.getId() > 0) {
+                    if (DAO.editar(obj)) {
+                        JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Erro ao Editar");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                    obj = DAO.inserir(obj);
+                    if (obj.getId() != 0) {
+                        atualizarCampos();
+                        JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                    }
                 }
+                
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao Salvar: " + e.getMessage(), "Salvar", JOptionPane.ERROR_MESSAGE);
@@ -258,7 +235,6 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbCancelar;
-    private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbExcluir;
     private javax.swing.JButton jbNovo;
     private javax.swing.JButton jbSalvar;
@@ -274,6 +250,16 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
         jtId.setText(obj.getId()+"");
         jtPlaca.setText(obj.getNumeroPlaca());
         jtDescricao.setText(obj.getDesc());
+            
+        jtId.setEnabled(false);
+        jtPlaca.setEnabled(true);
+        jtDescricao.setEnabled(true);
+
+        jbBuscar.setEnabled(false);
+        jbNovo.setEnabled(false);
+        jbCancelar.setEnabled(true);
+        jbExcluir.setEnabled(true);
+        jbSalvar.setEnabled(true);
     }
     
     private void estadoInicialCampos() {
@@ -286,7 +272,6 @@ public class jifVeiculo extends javax.swing.JInternalFrame {
         jbBuscar.setEnabled(true);
         jbNovo.setEnabled(true);
         jbCancelar.setEnabled(false);
-        jbEditar.setEnabled(false);
         jbExcluir.setEnabled(false);
         jbSalvar.setEnabled(false);
     }

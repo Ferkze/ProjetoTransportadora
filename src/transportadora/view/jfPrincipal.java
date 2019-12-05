@@ -6,7 +6,6 @@ public class jfPrincipal extends javax.swing.JFrame {
     
     public jfPrincipal() {
         initComponents();
-        jbRelatorio.setEnabled(false);
     }
 
     
@@ -17,11 +16,9 @@ public class jfPrincipal extends javax.swing.JFrame {
         jdpPrincipal = new javax.swing.JDesktopPane();
         jbManifesto = new javax.swing.JButton();
         jbCTRC = new javax.swing.JButton();
-        jbCliReme = new javax.swing.JButton();
-        jbCliDest = new javax.swing.JButton();
+        jbCliente = new javax.swing.JButton();
         jbMotorista = new javax.swing.JButton();
         jbVeiculo = new javax.swing.JButton();
-        jbRelatorio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PROJETO TRANSPORTADORA");
@@ -54,17 +51,10 @@ public class jfPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbCliReme.setText("Cliente Remetente");
-        jbCliReme.addActionListener(new java.awt.event.ActionListener() {
+        jbCliente.setText("Cliente");
+        jbCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCliRemeActionPerformed(evt);
-            }
-        });
-
-        jbCliDest.setText("Cliente Destinatário");
-        jbCliDest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbCliDestActionPerformed(evt);
+                jbClienteActionPerformed(evt);
             }
         });
 
@@ -81,14 +71,7 @@ public class jfPrincipal extends javax.swing.JFrame {
                 jbVeiculoActionPerformed(evt);
             }
         });
-
-        jbRelatorio.setText("Relatório");
-        jbRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbRelatorioActionPerformed(evt);
-            }
-        });
-
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,13 +79,11 @@ public class jfPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbCliReme, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbCliDest, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbCTRC, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbManifesto, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbMotorista, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jdpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -115,18 +96,15 @@ public class jfPrincipal extends javax.swing.JFrame {
                     .addComponent(jdpPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jbManifesto, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jbCTRC, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(jbCliReme, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jbCliDest, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(jbMotorista, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addGap(18, 18, 18)
                         .addComponent(jbVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jbRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -145,17 +123,11 @@ public class jfPrincipal extends javax.swing.JFrame {
       janela.setVisible(true);
     }//GEN-LAST:event_jbCTRCActionPerformed
 
-    private void jbCliRemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCliRemeActionPerformed
-      jifClienteRemetente janela = new jifClienteRemetente();
+    private void jbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbClienteActionPerformed
+      jifCliente janela = new jifCliente();
       jdpPrincipal.add(janela);
       janela.setVisible(true);
-    }//GEN-LAST:event_jbCliRemeActionPerformed
-
-    private void jbCliDestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCliDestActionPerformed
-      jifClienteDestinatario janela = new jifClienteDestinatario();
-      jdpPrincipal.add(janela);
-      janela.setVisible(true);
-    }//GEN-LAST:event_jbCliDestActionPerformed
+    }//GEN-LAST:event_jbClienteActionPerformed
 
     private void jbMotoristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMotoristaActionPerformed
       jifMotorista janela = new jifMotorista();
@@ -168,10 +140,6 @@ public class jfPrincipal extends javax.swing.JFrame {
       jdpPrincipal.add(janela);
       janela.setVisible(true);
     }//GEN-LAST:event_jbVeiculoActionPerformed
-
-    private void jbRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRelatorioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jbRelatorioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,11 +178,9 @@ public class jfPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbCTRC;
-    private javax.swing.JButton jbCliDest;
-    private javax.swing.JButton jbCliReme;
+    private javax.swing.JButton jbCliente;
     private javax.swing.JButton jbManifesto;
     private javax.swing.JButton jbMotorista;
-    private javax.swing.JButton jbRelatorio;
     private javax.swing.JButton jbVeiculo;
     private javax.swing.JDesktopPane jdpPrincipal;
     // End of variables declaration//GEN-END:variables
