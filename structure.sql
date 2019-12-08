@@ -7,9 +7,9 @@
 	--sp_help tbl_CTRC
 
 	--Criar Tabelas
-CREATE TABLE tbl_Usuarios (
+CREATE TABLE tbl_Usuario (
 	IdUsuario INT PRIMARY KEY IDENTITY(1,1),
-	apelido VARCHAR(30) NOT NULL,
+	apelido VARCHAR(30) NOT NULL UNIQUE,
 	senha VARCHAR(10) NOT NULL
 );
 
@@ -74,13 +74,13 @@ CREATE TABLE tbl_CTRCManifesto (
 
 	--Inserir Usuarios
 
-	-- DELETE tbl_Usuarios WHERE IdUsuario>'0'
-	-- SELECT * FROM tbl_Usuarios
+	-- DELETE tbl_Usuario WHERE IdUsuario>'0'
+	-- SELECT * FROM tbl_Usuario
 
-	INSERT INTO tbl_Usuarios (apelido, senha) VALUES ('cadu', 'fatec123')
-	INSERT INTO tbl_Usuarios (apelido, senha) VALUES ('luiz', 'fatec123')
-	INSERT INTO tbl_Usuarios (apelido, senha) VALUES ('carlos', 'fatec123')
-	INSERT INTO tbl_Usuarios (apelido, senha) VALUES ('sueli', 'FATECSBC')
+INSERT INTO tbl_Usuario (apelido, senha) VALUES ('cadu', 'fatec123')
+INSERT INTO tbl_Usuario (apelido, senha) VALUES ('luiz', 'fatec123')
+INSERT INTO tbl_Usuario (apelido, senha) VALUES ('carlos', 'fatec123')
+INSERT INTO tbl_Usuario (apelido, senha) VALUES ('sueli', 'FATECSBC')
 
 	--Inserir Veiculos
 

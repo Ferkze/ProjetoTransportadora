@@ -17,7 +17,7 @@ public class ClienteData extends DataSource {
     }
 
     public boolean inserir(Cliente r) throws Exception {
-        String sql = "INSERT INTO tbl_Cliente (nome, endereco, cidade, uf, cnpj, cpf, telefone) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO tbl_Cliente (nome, endereco, cidade, uf, cnpj, cpf, telefone, tipo_organizacao) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         Connection c = getConnection();
         PreparedStatement ps = c.prepareStatement(sql);
         ps.setString(1, r.getNome());
@@ -27,6 +27,7 @@ public class ClienteData extends DataSource {
         ps.setString(5, r.getCnpj());
         ps.setString(6, r.getCpf());
         ps.setString(7, r.getTelefone());
+        ps.setString(8, r.getTipoOrg());
         int registros = ps.executeUpdate();
 
         if (registros > 0) {

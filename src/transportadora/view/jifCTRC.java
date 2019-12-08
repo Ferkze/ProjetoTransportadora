@@ -6,6 +6,8 @@ import dao.ClienteData;
 import dao.ManifestoData;
 import dao.MotoristaData;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -20,6 +22,8 @@ public class jifCTRC extends javax.swing.JInternalFrame {
     private CTRC obj;
     private CTRCData DAO;
     private ArrayList<Manifesto> manifestos;
+    private ArrayList<Cliente> clientes;
+    private ArrayList<Motorista> motoristas;
     private DefaultComboBoxModel clientesDestModel;
     private DefaultComboBoxModel clientesRemeModel;
     private DefaultComboBoxModel motoristasModel;
@@ -276,26 +280,30 @@ public class jifCTRC extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
-        try {
             if (validarCampos()) {
                 preencherObjeto();
                 if (obj.getId() > 0) {
-                    if (DAO.editar(obj)) {
-                        JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Erro ao Editar");
+                    try {
+                        if (DAO.editar(obj)) {
+                            JOptionPane.showMessageDialog(this, "Editado com Sucesso!");
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Erro ao Editar");
+                        }
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(this, "Erro ao Editar: " + ex.getMessage(), "Salvar", JOptionPane.ERROR_MESSAGE);
                     }
                 } else {
-                    if (DAO.inserir(obj)) {
-                        JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                    try {
+                        if (DAO.inserir(obj)) {
+                            JOptionPane.showMessageDialog(this, "Salvo com Sucesso!");
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Erro ao Salvar");
+                        }
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(this, "Erro ao Salvar: " + ex.getMessage(), "Salvar", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Erro ao Salvar: " + e.getMessage(), "Salvar", JOptionPane.ERROR_MESSAGE);
-        }
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
@@ -494,13 +502,13 @@ public class jifCTRC extends javax.swing.JInternalFrame {
     private void preencherObjeto() {
         obj.setId(Integer.parseInt(jtId.getText()));
         Cliente cd = obj.getDestinatario();
-        cd.setId((int) jcbDest.getSelectedItem());
+        cd.setId(clientes.get(jcbDest.getSelectedIndex()).getId());
         obj.setcDest(cd);
         Cliente cr = obj.getRemetente();
-        cr.setId((int) jcbReme.getSelectedItem());
+        cr.setId(clientes.get(jcbReme.getSelectedIndex()).getId());
         obj.setRemetente(cr);
         Motorista m = obj.getMotorista();
-        m.setId((int) jcbMoto.getSelectedItem());
+        m.setId(motoristas.get(jcbMoto.getSelectedIndex()).getId());
         obj.setMotorista(m);
         obj.setDataEmissao(jtDataEmissao.getText());
         obj.setPeso(Integer.parseInt(jtPesoFrete.getText()));
@@ -529,7 +537,7 @@ public class jifCTRC extends javax.swing.JInternalFrame {
     private void carregarEntidades() {
         try {
             ClienteData cd = new ClienteData(DAO.getConnection());
-            ArrayList<Cliente> clientes = cd.buscarTudo();
+            clientes = cd.buscarTudo();
             for (int i = 0; i < clientes.size(); i++) {
                 Cliente c = clientes.get(i);
                 clientesDestModel.addElement(c.getId()+": "+c.getNome());
@@ -542,7 +550,7 @@ public class jifCTRC extends javax.swing.JInternalFrame {
         jcbReme.setModel(clientesRemeModel);
         try {
             MotoristaData md = new MotoristaData(DAO.getConnection());
-            ArrayList<Motorista> motoristas = md.buscarTudo();
+            motoristas = md.buscarTudo();
             for (int i = 0; i < motoristas.size(); i++) {
                 motoristasModel.addElement(motoristas.get(i).getId()+": "+motoristas.get(i).getNome());
             }

@@ -32,11 +32,12 @@
                   <Component id="jbManifesto" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                   <Component id="jbMotorista" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                   <Component id="jbVeiculo" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
-                  <Component id="jbRelatorio" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                  <Component id="jbSair" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
+                  <Component id="jlLogin" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
               <Component id="jdpPrincipal" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="10" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,8 +57,10 @@
                       <Component id="jbMotorista" min="-2" pref="65" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jbVeiculo" min="-2" pref="63" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jbRelatorio" min="-2" pref="63" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="jlLogin" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jbSair" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -127,13 +130,18 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbVeiculoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jbRelatorio">
+    <Component class="javax.swing.JButton" name="jbSair">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Relat&#xf3;rio"/>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Sair"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbRelatorioActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbSairActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="java.awt.Label" name="jlLogin">
     </Component>
   </SubComponents>
 </Form>

@@ -404,7 +404,7 @@ public class jifManifesto extends javax.swing.JInternalFrame {
 
     private boolean validarCampos() {
         if (jtFilialOrigem.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Digitite Filial de Origem");
+            JOptionPane.showMessageDialog(this, "Digite Filial de Origem");
             jtFilialOrigem.requestFocus();
             return false;
         }
